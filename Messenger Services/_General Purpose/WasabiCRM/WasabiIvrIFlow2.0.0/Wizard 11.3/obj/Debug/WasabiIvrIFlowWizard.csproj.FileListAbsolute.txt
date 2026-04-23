@@ -1,0 +1,12 @@
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\Debug\ApplicationManager.dll
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\Debug\CommonDialogControls.dll
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\Debug\ManagedDialogHost.dll
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\obj\Debug\WasabiIvrIFlowWizard.csproj.AssemblyReference.cache
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\obj\Debug\WasabiIvrIFlowWizard.csproj.GenerateResource.cache
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\obj\Debug\WasabiIvrIFlowWizard.csproj.CoreCompileInputs.cache
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\obj\Debug\WasabiIv.ED2DA411.Up2Date
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\Debug\WasabiIvrIFlowWizard.dll
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\Debug\WasabiIvrIFlowWizard.pdb
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\obj\Debug\WasabiIvrIFlowWizard.dll
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\obj\Debug\WasabiIvrIFlowWizard.pdb
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Wizard 11.3\obj\Debug\Ifm.Phones.Blocks.Customizations.GeneralPurpose.WasabiIvrIFlow.resources

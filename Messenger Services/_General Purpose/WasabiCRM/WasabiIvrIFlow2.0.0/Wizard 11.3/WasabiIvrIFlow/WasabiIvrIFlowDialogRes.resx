@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="en.AnswerPrefix" xml:space="preserve">
+    <value>Prefix transfer property Answers ("Answers"):</value>
+  </data>
+  <data name="en.ASRConfidenceThreshold" xml:space="preserve">
+    <value>Confidence threshold (0-100):</value>
+  </data>
+  <data name="en.ASRLookAheadTime" xml:space="preserve">
+    <value>Look ahead time (msec):</value>
+  </data>
+  <data name="en.ASRMaxSilence" xml:space="preserve">
+    <value>Maximum waiting time (seconds):</value>
+  </data>
+  <data name="en.BotTemplateId" xml:space="preserve">
+    <value>BotTemplateId:</value>
+  </data>
+  <data name="en.ClosingMessage" xml:space="preserve">
+    <value>ClosingMessage (true, false):</value>
+  </data>
+  <data name="en.DTMFWaitTime" xml:space="preserve">
+    <value>Maximum waiting time (seconds):</value>
+  </data>
+  <data name="en.EngineNameASR" xml:space="preserve">
+    <value>Engine Name ASR:</value>
+  </data>
+  <data name="en.EngineNameTTS" xml:space="preserve">
+    <value>Engine name TTS:</value>
+  </data>
+  <data name="en.Fallback" xml:space="preserve">
+    <value>Fallback (true, false):</value>
+  </data>
+  <data name="en.InformationStep" xml:space="preserve">
+    <value>Information Step (true, false):</value>
+  </data>
+  <data name="en.lblEngineNameSTT" xml:space="preserve">
+    <value>STT Engine:</value>
+  </data>
+  <data name="en.lblInstruction1" xml:space="preserve">
+    <value>If the 'QuestionFile' parameter is set, pre-recorded messages are used, if the 'QuestionText' parameter is set, TTS is used:</value>
+  </data>
+  <data name="en.lblInstruction2" xml:space="preserve">
+    <value>Indicate the name of the sub-directory in which the system should search for messages to play:</value>
+  </data>
+  <data name="en.lblLanguageCodeSTT" xml:space="preserve">
+    <value>Language Code (BCP-47 format):</value>
+  </data>
+  <data name="en.lbllblInstruction3" xml:space="preserve">
+    <value>Configure TTS parameters:</value>
+  </data>
+  <data name="en.MessagesPath" xml:space="preserve">
+    <value>Messages Path:</value>
+  </data>
+  <data name="en.QuestionFile" xml:space="preserve">
+    <value>Question File::</value>
+  </data>
+  <data name="en.QuestionText" xml:space="preserve">
+    <value>Question Text:</value>
+  </data>
+  <data name="en.StopOnDigit" xml:space="preserve">
+    <value>End recognition on receiving Digits after</value>
+  </data>
+  <data name="en.StopOnDigits" xml:space="preserve">
+    <value>End recognition on receiving Digits after</value>
+  </data>
+  <data name="en.STTConfidenceThreshold" xml:space="preserve">
+    <value>Confidence threshold (0-100):</value>
+  </data>
+  <data name="en.STTEnableBeep" xml:space="preserve">
+    <value>Enable beep notification at the start of recognition</value>
+  </data>
+  <data name="en.STTMaxSilence" xml:space="preserve">
+    <value>Maximum waiting time (seconds):</value>
+  </data>
+  <data name="en.STTStopOnDigitPhrase" xml:space="preserve">
+    <value>Invitation phrase to press digit to stop vocalization</value>
+  </data>
+  <data name="en.tabPagAnswerOpen" xml:space="preserve">
+    <value>Open Answer</value>
+  </data>
+  <data name="en.tabPageAnswer" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="en.tabPageQuestion" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="en.tabPageQuestionTTS" xml:space="preserve">
+    <value>TTS Question</value>
+  </data>
+  <data name="en.tabPageQuestionTTSPhrases" xml:space="preserve">
+    <value>Link sentences</value>
+  </data>
+  <data name="en.tabPageQuestionWave" xml:space="preserve">
+    <value>WAV question</value>
+  </data>
+  <data name="en.TPLastAnswer" xml:space="preserve">
+    <value>Transfer Property Save Answer done:</value>
+  </data>
+  <data name="en.TTS_ASR_MenuBegin" xml:space="preserve">
+    <value>List of choises: Start menu phrase</value>
+  </data>
+  <data name="en.TTS_ASR_NumericMenuAnd" xml:space="preserve">
+    <value>Numeric case: end value</value>
+  </data>
+  <data name="en.TTS_ASR_NumericMenuBegin" xml:space="preserve">
+    <value>Numeric case: start value</value>
+  </data>
+  <data name="en.TTS_DTMF_MenuBegin" xml:space="preserve">
+    <value>List of choises: Start menu phrase</value>
+  </data>
+  <data name="en.TTS_DTMF_MenuFor" xml:space="preserve">
+    <value>List of choises: for</value>
+  </data>
+  <data name="en.TTS_DTMF_Numeric10" xml:space="preserve">
+    <value>Numeric case: choice for 10 (ex. 'type # for 10')</value>
+  </data>
+  <data name="en.TTS_DTMF_NumericMenuAnd" xml:space="preserve">
+    <value>Numeric case: end value </value>
+  </data>
+  <data name="en.TTS_DTMF_NumericMenuBegin" xml:space="preserve">
+    <value>Numeric case: start value </value>
+  </data>
+  <data name="en.UseASRForInput" xml:space="preserve">
+    <value>Use ASR (if not checked use DTMF):</value>
+  </data>
+  <data name="en.UseSTTForOpenAnswer" xml:space="preserve">
+    <value>Open answer: use STT (skipped if not selected)</value>
+  </data>
+  <data name="it.AnswerPrefix" xml:space="preserve">
+    <value>Prefisso transfer property Risposte ("Answer")</value>
+  </data>
+  <data name="it.ASRConfidenceThreshold" xml:space="preserve">
+    <value>Soglia confidenza (0-100):</value>
+  </data>
+  <data name="it.ASRLookAheadTime" xml:space="preserve">
+    <value>Tempo Look ahead (msec):</value>
+  </data>
+  <data name="it.ASRMaxSilence" xml:space="preserve">
+    <value>Tempo massimo di attesa (secondi):</value>
+  </data>
+  <data name="it.Campaign" xml:space="preserve">
+    <value>Nome campagna questionario:</value>
+  </data>
+  <data name="it.ClosingMessage" xml:space="preserve">
+    <value>ClosingMessage (true, false):</value>
+  </data>
+  <data name="it.DTMFWaitTime" xml:space="preserve">
+    <value>Tempo massimo di attesa (secondi):</value>
+  </data>
+  <data name="it.EngineNameASR" xml:space="preserve">
+    <value>Nome motore ASR:</value>
+  </data>
+  <data name="it.EngineNameTTS" xml:space="preserve">
+    <value>Nome motore TTS:</value>
+  </data>
+  <data name="it.Fallback" xml:space="preserve">
+    <value>Fallback (true, false):</value>
+  </data>
+  <data name="it.InformationStep" xml:space="preserve">
+    <value>Information Step (true, false):</value>
+  </data>
+  <data name="it.lblEngineNameSTT" xml:space="preserve">
+    <value>Motore di STT:</value>
+  </data>
+  <data name="it.lblInstruction2" xml:space="preserve">
+    <value>Indicare il nome della sotto-directory in cui il sistema deve cercare i messaggi da suonare:</value>
+  </data>
+  <data name="it.lblLanguageCodeSTT" xml:space="preserve">
+    <value>Codice Lingua (formato BCP-47):</value>
+  </data>
+  <data name="it.lbllblInstruction3" xml:space="preserve">
+    <value>Configurare i parametri per il TTS:</value>
+  </data>
+  <data name="it.MessagesPath" xml:space="preserve">
+    <value>Percorso messaggi:</value>
+  </data>
+  <data name="it.QuestionText" xml:space="preserve">
+    <value>Testo domanda:</value>
+  </data>
+  <data name="it.StopOnDigit" xml:space="preserve">
+    <value>Termina riconoscimento su ricezione Digits dopo</value>
+  </data>
+  <data name="it.STTConfidenceThreshold" xml:space="preserve">
+    <value>Soglia confidenza (0-100):</value>
+  </data>
+  <data name="it.STTEnableBeep" xml:space="preserve">
+    <value>Abilita notifica del beep ad inizio riconoscimento</value>
+  </data>
+  <data name="it.STTMaxSilence" xml:space="preserve">
+    <value>Tempo massimo di attesa (secondi):</value>
+  </data>
+  <data name="it.STTStopOnDigitPhrase" xml:space="preserve">
+    <value>Frase invito a premere digit per interrompere vocalizzazione</value>
+  </data>
+  <data name="it.tabPagAnswerOpen" xml:space="preserve">
+    <value>Risposta Aperta</value>
+  </data>
+  <data name="it.tabPageAnswer" xml:space="preserve">
+    <value>Risposta</value>
+  </data>
+  <data name="it.tabPageQuestion" xml:space="preserve">
+    <value>Domanda</value>
+  </data>
+  <data name="it.tabPageQuestionTTS" xml:space="preserve">
+    <value>Domanda TTS</value>
+  </data>
+  <data name="it.tabPageQuestionTTSPhrases" xml:space="preserve">
+    <value>Frasi collegamento domanda TTS</value>
+  </data>
+  <data name="it.tabPageQuestionWave" xml:space="preserve">
+    <value>Domanda WAV</value>
+  </data>
+  <data name="it.TPLastAnswer" xml:space="preserve">
+    <value>Transfer Property in cui salvare risposta data:</value>
+  </data>
+  <data name="it.TTS_ASR_MenuBegin" xml:space="preserve">
+    <value>Elenco scelte: inizio frase menu</value>
+  </data>
+  <data name="it.TTS_ASR_NumericMenuAnd" xml:space="preserve">
+    <value>Caso numerico: valore finale</value>
+  </data>
+  <data name="it.TTS_ASR_NumericMenuBegin" xml:space="preserve">
+    <value>Caso numerico: valore iniziale</value>
+  </data>
+  <data name="it.TTS_DTMF_MenuBegin" xml:space="preserve">
+    <value>Elenco scelte: inizio frase menu</value>
+  </data>
+  <data name="it.TTS_DTMF_MenuFor" xml:space="preserve">
+    <value>Elenco scelte: per</value>
+  </data>
+  <data name="it.TTS_DTMF_Numeric10" xml:space="preserve">
+    <value>Caso numerico: scelta per 10 (es 'digitare # per 10')</value>
+  </data>
+  <data name="it.TTS_DTMF_NumericMenuAnd" xml:space="preserve">
+    <value>Caso numerico: valore finale</value>
+  </data>
+  <data name="it.TTS_DTMF_NumericMenuBegin" xml:space="preserve">
+    <value>Caso numerico: valore iniziale</value>
+  </data>
+  <data name="it.UseASRForInput" xml:space="preserve">
+    <value>Usa ASR (se non selezionato usa DTMF):</value>
+  </data>
+  <data name="it.UseSTTForOpenAnswer" xml:space="preserve">
+    <value>Risposta aperta:  usa STT (se non selezionato viene saltata)</value>
+  </data>
+</root>

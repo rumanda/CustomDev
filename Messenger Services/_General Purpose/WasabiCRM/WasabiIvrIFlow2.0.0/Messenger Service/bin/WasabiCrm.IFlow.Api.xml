@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WasabiCrm.IFlow.Api</name>
+    </assembly>
+    <members>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationContinueRequest.UserInput">
+            <summary>
+            Eventuale input utente.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationCreateRequest.InteractionId">
+            <summary>
+            Id dell'interazione a cui associare la nuova conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationCreateRequest.FlowId">
+            <summary>
+            Id del flusso con cui iniziare la conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationCreateRequest.AssistantId">
+            <summary>
+            Id dell'eventuale assistente da utilizzare per la conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.ConversationId">
+            <summary>
+            Identifica la conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.CurrentFlowId">
+            <summary>
+            Identifica il flusso corrente della conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.CurrentStepId">
+            <summary>
+            Identifica lo step corrente nel flusso corrente della conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.CurrentStepType">
+            <summary>
+            Identifica il tipo dell'eventuale step corrente.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.Message">
+            <summary>
+            Eventuale messaggio da dispacciare all'utente.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.UserInputRequired">
+            <summary>
+            Indica la necessità di input utente per poter proseguire. 
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.UserInputNumeric">
+            <summary>
+            Se true allora è necessario che l'input sia numerico.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.UserInputMaxLength">
+            <summary>
+            Eventuale lunghezza massima ammessa per l'input libero.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.IsTerminated">
+            <summary>
+            Indica che la conversazione è terminata e non può più essere continuata.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.IsError">
+            <summary>
+            Indica che la conversazione è terminata in errore.
+            Il <see cref="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.Message"/> riporta il motivo da riferire all'utente.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.Choices">
+            <summary>
+            Eventuale elenco di valori possibili per il prossimo input utente.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.Variables">
+            <summary>
+            Elenco delle variabili raccolte nella conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.PropertyValues">
+            <summary>
+            Elenco dei dati aggiuntivi raccolti nella conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationResponse.IsTransferToHumanAgent">
+            <summary>
+            Indica il trasferimento a operatore umano.
+            Null se si sta parlando con una versione del server precedente alla 1.28.0 perché non supporta questa informazione, altrimenti true o false.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationWhatsAppCreateRequest.InteractionId">
+            <summary>
+            Id dell'interazione a cui associare la nuova conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.Api.FlowConversations.FlowConversationWhatsAppCreateRequest.FlowId">
+            <summary>
+            Id del flusso con cui iniziare la conversazione.
+            </summary>
+        </member>
+    </members>
+</doc>

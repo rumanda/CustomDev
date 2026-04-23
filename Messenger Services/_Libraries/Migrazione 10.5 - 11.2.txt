@@ -1,0 +1,27 @@
+MIGRAZIONE 10.5 --> 11.2:
+
+1. cambiare references ai nuovi:
+ApplicationManager
+CommonDialogControls
+ManagedDialogHost
+
+2. In File .cs cambiare using in:
+using Ifm.Phones.Blocks.ApplicationManager.Attributes;
+using Ifm.Phones.Blocks.ApplicationManager.Tools;
+using Ifm.Phones.Blocks.Dialogs.Hosting;
+using Ifm.Phones.Blocks.BaseMessengerServices.Dialogs;
+
+3. Cambiare BlockAttribute (eventualmente):
+[BlockAttribute(XPathConstants.NODE_MESSENGER_BLOCK,			
+in 
+[BlockAttribute(XMLConstants.NODE_MESSENGER_BLOCK,
+XMLConstants
+
+4. Cambiare IFM. in Ifm.
+in tutti i riferimenti del namespace (es new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SetParamValue();)
+Basta cercare in tutti i file di progetto e fare un replace
+
+Category:
+AddOns Messenger Services
+
+

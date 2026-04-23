@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WasabiCrm.IFlow.DataModel</name>
+    </assembly>
+    <members>
+        <member name="F:WasabiCrm.IFlow.DataModel.Constants.Permissions.CanViewDashboards">
+            <summary>
+                Visualizzazione delle dashboard
+            </summary>
+        </member>
+        <member name="F:WasabiCrm.IFlow.DataModel.Constants.Permissions.CanAccessConfigurations">
+            <summary>
+                Accesso alla configurazione
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.ExternalApi.ApiAuthTypeOAuth2.FlowType">
+            <summary>
+            client credentials - resource owner password credentials
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.Flow.IsAddressableByAssistant">
+            <summary>
+            Permetti all'assistente di riconoscerlo come intento.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.Flow.ContactReasonId">
+            <summary>
+            Eventuale motivo di contatto da assegnare all'interazione quando entra in questo Flow.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.Flow.AnswerRetry">
+            <summary>
+            Eventuale override del numero di tentativi a disposizione per rispondere alle domande, prima che
+            la conversazione venga chiusa in errore. Default: AppSetting 'IFlow:AnswerRetry'.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.Flow.AnswerRetryErrorMessage">
+            <summary>
+            Eventuale messaggio di errore da emettere prima di chiudere la conversazione qualora vengano superati i tentativi previsti da <see cref="P:WasabiCrm.IFlow.DataModel.Flow.AnswerRetry"/>.
+            Default: AppSetting 'IFlow:AnswerRetryErrorMessage'
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.Flow.CompletionTimeout">
+            <summary>
+            Eventuale override del tempo a disposizione per concludere la conversazione con il Flow.
+            Default: AppSetting 'IFlow:FlowCompletionTimeout'
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.Flow.CompletionTimeoutErrorMessage">
+            <summary>
+            Eventuale messaggio di errore da emettere prima di chiudere la conversazione qualora scada il tempo a disposizione previsto da <see cref="P:WasabiCrm.IFlow.DataModel.Flow.CompletionTimeout"/>.
+            Default: AppSetting 'IFlow:FlowCompletionTimeoutErrorMessage'
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.Flow.Steps">
+            <summary>
+            Passaggi che compongono il flusso.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.FlowConversation.Variables">
+            <summary>
+            Dizionario di variabili globali.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.FlowConversation.Parents">
+            <summary>
+            Stack di chiamate dei flussi.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.FlowConversation.FlowStates">
+            <summary>
+            Stato di tutti i flussi percorsi durante la conversazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.FlowConversationEntry.Created">
+            <summary>
+            Timestamp di quando il flusso è entrato nello step a cui si riferisce questa entry.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.FlowStep.Type">
+            <summary>
+            Indica il tipo di step
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.IFlow.DataModel.MessageEntry">
+            <summary>
+            Rappresenta un messaggio all'interno di <see cref="P:WasabiCrm.IFlow.DataModel.FlowConversationEntry.Messages"/>.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.MessageEntry.Source">
+            <summary>
+            Chi ha scritto il messaggio.
+            User, Bot, etc.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.IFlow.DataModel.StepConfigurations.AiAssistantStepConfiguration">
+            <summary>
+            Lo step ha il compito di chiedere un input all'utente, quindi passarlo all'assistente AI che lo analizza e ci dirà:
+            - se l'utente vuole intraprendere un nuovo flusso o abbandonare comunque quello corrente.
+            - eventuali variabili riconosciute, tra quelle previste dal flusso corrente e/o dal nuovo flusso riconosciuto.
+            - eventuali richieste aggiuntive (fuori contesto) fatte dall'utente, da passare alla FAQ/RAG.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.AiAssistantStepConfiguration.BlockFlowChangeDetection">
+            <summary>
+            Se impostato disattiva la funzione di rilevamento dell'intento di cambiare flusso.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.AiAssistantStepConfiguration.UseCallSemantics">
+            <summary>
+            Se impostato, l'eventuale cambio di flusso rilevato in questo step verrà eseguito con semantica di chiamata (parent/child).
+            Default: false (semantica di trasferimento a senso unico).
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.AiAssistantStepConfiguration.RequiredVariableNames">
+            <summary>
+            Se impostato blocca l'avanzamento nel flusso finché tutte le variabili nominate
+            non sono state valorizzate.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.CheckConsentStepConfiguration.VariableVirtualAddress">
+            <summary>
+                Verifica del consenso su un recapito particolare dell'anagrafica.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.CheckConsentStepConfiguration.NextStepValidConsentId">
+            <summary>
+                Se il consenso è presente e valido, allora procedo a questo step.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepConfiguration.NextStepAndId">
+            <summary>
+                Se tutte le condizioni si verificano, allora procedo a questo step.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepConfiguration.NextStepOrId">
+            <summary>
+                Se almeno una condizione si verifica, allora procedo a questo step.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepConfiguration.Conditions">
+            <summary>
+                Elenco di condizioni da verificare.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepCondition.SelectionExpression">
+            <summary>
+                Espressione JsonPath che identifica la proprietà da controllare.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepCondition.Operator">
+            <summary>
+                Operatore che deve matchare.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepCondition.MatchValue">
+            <summary>
+                Eventuale valore da matchare con l'operatore <see cref="F:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepOperator.Equals"/> e <see cref="F:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepOperator.Contains"/>.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ConditionalStepCondition.NextStepId">
+            <summary>
+                Se si verifica questa condizione, vado direttamente qua senza verificare il resto.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.IFlow.DataModel.StepConfigurations.ConversationEndStepConfiguration">
+            <summary>
+            Chiude l'interazione associata al flusso e termina il flusso.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ExternalApiStepConfiguration.ExternalApiCatalogId">
+            <summary>
+                Id del catalogo api.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ExternalApiStepConfiguration.BaseUrl">
+            <summary>
+                Eventuale override della base url.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ExternalApiStepConfiguration.RequestMappings">
+            <summary>
+                Eventuali mapping degli arg del catalogo.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ExternalApiStepConfiguration.Variables">
+            <summary>
+                Eventuali variabili in cui salvare la response o parte di essa.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ExternalApiStepConfiguration.InteractionProperties">
+            <summary>
+                Eventuali dati aggiuntivi in cui salvare la response o parte di essa.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ResultProcessingInfo.SelectionExpression">
+            <summary>
+                Eventuale espressione JsonPath che identifica la parte da estrarre.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ResultProcessingInfo.FormatString">
+            <summary>
+                Eventuale stringa di formattazione da utilizzare per formattare il dato restituito da <see cref="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ResultProcessingInfo.SelectionExpression"/>.
+                Utilizzare la notazione {0:formato} per inserire la parte variabile.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ResultProcessingInfo.Separator">
+            <summary>
+                Eventuale separatore da utilizzare qualora <see cref="P:WasabiCrm.IFlow.DataModel.StepConfigurations.ResultProcessingInfo.SelectionExpression"/> identifichi un array.
+                Default se null: virgola + spazio.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.IFlow.DataModel.StepConfigurations.FlowEndStepConfiguration">
+            <summary>
+            Termina il flusso e cerca di attivare un flusso padre o un flusso precedentemente sospeso.
+            Se questo è l'ultimo flusso allora termina anche la conversazione.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.IFlow.DataModel.StepConfigurations.FlowStepConfiguration">
+            <summary>
+            Classe base da cui derivare le configurazioni dei vari tipi di step.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.FlowStepConfiguration.ContactReasonId">
+            <summary>
+            Eventuale motivo di contatto da impostare sull'interazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.GrantConsentStepConfiguration.VariableVirtualAddress">
+            <summary>
+                Aggiunta del consenso su un recapito particolare dell'anagrafica.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.InputEvaluationStepConfiguration.SearchAiEntities">
+            <summary>
+                Se valorizzato a true, ricerca le entità configurate per il flusso.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.IntentRecognitionStepConfiguration.InputVariableName">
+            <summary>
+                Eventuale variabile di input da sottoporre al motore AI.
+                Se non valorizzato, viene utilizzato l'ultimo UserInput inserito dall'utente.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.IntentRecognitionStepConfiguration.IntentVariableName">
+            <summary>
+                Nome della variabile in cui salvare l'id dell'intento.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.IntentRecognitionStepConfiguration.InteractionPropertyId">
+            <summary>
+                Eventuale dato aggiuntivo dove salvare il titolo dell'intento.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.IntentRecognitionStepConfiguration.Intents">
+            <summary>
+                Elenco degli intenti da sottoporre al motore AI.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.AlwaysValidAnswer">
+            <summary>
+                Considera sempre valida la risposta.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.Answers">
+            <summary>
+                Possibili risposte.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.UserInputNumeric">
+            <summary>
+            Se true allora è necessario che l'input sia numerico.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.UserInputMaxLength">
+            <summary>
+            Eventuale lunghezza massima ammessa per l'input libero.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.RegularExpression">
+            <summary>
+            Eventuale espressione regolare per valutare l'input.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.RoutingTable">
+            <summary>
+                Eventuale dizionario {"chiave risposta data", "id step dove andare"}.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.InteractionPropertyId">
+            <summary>
+                Eventuale dato aggiuntivo dove salvare la risposta data dall'utente.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.AnswerVariableName">
+            <summary>
+                Nome dell'eventuale variabile in cui salvare la risposta data dall'utente.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionBaseStepConfiguration.SkipIfDataEvaluated">
+            <summary>
+                Salta la domanda se il dato è già stato raccolto nella variabile o nel dato aggiuntivo.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.QuestionStepConfiguration.SearchAiEntities">
+            <summary>
+                Se valorizzato a true, ricerca le entità configurate per il flusso.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.RevokeConsentStepConfiguration.VariableVirtualAddress">
+            <summary>
+                Revoca del consenso su un recapito particolare dell'anagrafica.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.IFlow.DataModel.StepConfigurations.TimeCheckStepConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.TimeCheckStepConfiguration.RoutingTable">
+            <summary>
+            Dizionario {"chiave tabella Base.TimeTable", "id step dove andare"}.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.IFlow.DataModel.StepConfigurations.TransferToAgentStepConfiguration">
+            <summary>
+            Termina il flusso assegnando l'interazione a qualcuno/qualche gruppo.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.IFlow.DataModel.StepConfigurations.TransferToFlowStepConfiguration">
+            <summary>
+            Trasferisce il controllo a un altro flusso.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.IFlow.DataModel.StepConfigurations.TransferToFlowStepConfiguration.FlowId">
+            <summary>
+            Id del flusso a cui trasferire.
+            </summary>
+        </member>
+    </members>
+</doc>

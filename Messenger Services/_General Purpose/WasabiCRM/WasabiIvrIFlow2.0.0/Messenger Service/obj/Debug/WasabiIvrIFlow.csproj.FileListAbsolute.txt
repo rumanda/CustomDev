@@ -1,0 +1,6 @@
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Messenger Service\obj\Debug\WasabiIvrIFlow.csproj.AssemblyReference.cache
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Messenger Service\obj\Debug\WasabiIvrIFlow.csproj.CoreCompileInputs.cache
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Messenger Service\Debug\WasabiIvrIFlow.dll
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Messenger Service\Debug\WasabiIvrIFlow.pdb
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Messenger Service\obj\Debug\WasabiIvrIFlow.dll
+E:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow\Messenger Service\obj\Debug\WasabiIvrIFlow.pdb

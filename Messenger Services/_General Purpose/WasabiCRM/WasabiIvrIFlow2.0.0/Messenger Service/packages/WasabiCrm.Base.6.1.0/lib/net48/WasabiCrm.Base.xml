@@ -1,0 +1,1707 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WasabiCrm.Base</name>
+    </assembly>
+    <members>
+        <member name="F:WasabiCrm.Base.Api.ErrorCodes.BlacklistedAddress">
+            <summary>
+            Il recapito specificato è in blacklist.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.Extensions.ApplySortingAndPaging``1(System.Linq.IQueryable{``0},WasabiCrm.Base.Api.SearchRequestBase)">
+            <summary>
+            Applica le specifiche di ordinamento e paginazione standard alla query corrente.
+            </summary>
+            <typeparam name="T">Tipo dell'insieme.</typeparam>
+            <param name="source">Query.</param>
+            <param name="request">Richiesta di ricerca standard.</param>
+            <returns>Query aggiornata (ma non ancora eseguita).</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.Extensions.PerformLookupAsync``1(System.Linq.IQueryable{``0},WasabiCrm.Base.Api.LookupRequestBase)">
+            <summary>
+            Esegue una ricerca sull'insieme di partenza <typeparamref name="T"/> e restituisce un elenco di coppie Id/DisplayName
+            in cui il displayName è l'unione del modello <see cref="P:WasabiCrm.Base.Api.LookupRequestBase.DisplayTemplate"/> con i dati di ogni record trovato.
+            Il metodo seleziona dal database solo i campi referenziati nel modello tra parentesi graffe (es: {Foo} oppure {Foo.Bar}).
+            Qualora siano referenziati più campi che finiscono con lo stesso nome è necessario specificare un alias (es: {CreatedBy.Name as C} assieme a {UpdatedBy.Name as U}).
+            Questo overload utilizza le opzioni di esecuzione predefinite.
+            </summary>
+            <typeparam name="T">Tipo dell'insieme.</typeparam>
+            <param name="source">Query di partenza.</param>
+            <param name="request">Dati della richiesta.</param>
+            <returns>Elenco di risultati.</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.Extensions.PerformLookupAsync``1(System.Linq.IQueryable{``0},WasabiCrm.Base.Api.LookupRequestBase,WasabiCrm.Base.Api.LookupOptions)">
+            <summary>
+            Esegue una ricerca sull'insieme di partenza <typeparamref name="T"/> e restituisce un elenco di coppie Id/DisplayName
+            in cui il displayName è l'unione del modello <see cref="P:WasabiCrm.Base.Api.LookupRequestBase.DisplayTemplate"/> con i dati di ogni record trovato.
+            Il metodo seleziona dal database solo i campi referenziati nel modello tra parentesi graffe (es: {Foo} oppure {Foo.Bar}).
+            Qualora siano referenziati più campi che finiscono con lo stesso nome è necessario specificare un alias (es: {CreatedBy.Name as C} assieme a {UpdatedBy.Name as U}).
+            Questo overload permette di specificare le opzioni di esecuzione.
+            </summary>
+            <typeparam name="T">Tipo dell'insieme.</typeparam>
+            <param name="source">Query di partenza.</param>
+            <param name="request">Dati della richiesta.</param>
+            <param name="options">Opzioni di esecuzione.</param>
+            <returns>Elenco di risultati.</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.Extensions.DynamicSelect``1(System.Linq.IQueryable{``0},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Permette di selezionare un elenco di campi dall'insieme di partenza, specificandoli come stringa.
+            Restituisce un insieme di tipo dynamic.
+            I nomi dei campi restituiti sono determinati in ordine da:
+            - eventuale clausola "as" (SourceFieldName as TargetFieldName)
+            - nome del campo di origine
+            - nome dell'ultimo segmento di un percorso (Foo.Bar.Baz => Baz)
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Api.IEntityReadService">
+            <summary>
+                Interfaccia standard per le API di lettura di entità.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Api.IEntityReadService`4">
+            <summary>
+                Interfaccia standard per le API di lettura di entità.
+                Versione Generic.
+            </summary>
+            <typeparam name="TEntity">Tipo di entità</typeparam>
+            <typeparam name="TEntityKey">Tipo della chiave dell'entità</typeparam>
+            <typeparam name="TSearchRequest">
+                Tipo specifico di request utilizzata per le ricerche standard (derivato da
+                SearchRequestBase)
+            </typeparam>
+            <typeparam name="TLookupRequest">
+                Tipo specifico di request utilizzata per la selezione "search-as-you-type" (derivato
+                da LookupRequestBase)
+            </typeparam>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.IEntityReadService`4.SearchAsync(`2)">
+            <summary>
+            Restituisce gli oggeti corrispondenti ai criteri di ricerca specificati.
+            </summary>
+            <param name="request">Criteri di ricerca.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.IEntityReadService`4.CountAsync(`2)">
+            <summary>
+            Conta gli oggeti corrispondenti ai criteri di ricerca specificati,
+            ignorando le istruzuoni di paginazione e di inclusione (ovviamente).
+            </summary>
+            <param name="request">Criteri di ricerca.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.IEntityReadService`4.ReadAsync(`1,System.String[])">
+            <summary>
+            Restituisce l'oggetto corrispondente alla chiave primaria specificata.
+            </summary>
+            <param name="id">Id dell'oggetto.</param>
+            <param name="includes">Elenco delle relazioni da includere.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.IEntityReadService`4.LookupAsync(`3)">
+            <summary>
+            Restituisce una versione semplificata id/text degli oggeti corrispondenti ai criteri di ricerca specificati.
+            </summary>
+            <param name="request">Criteri di ricerca e di presentazione dei dati.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.IEntityReadService`4.DescribeAsync">
+            <summary>
+            Descrive l'entità sottostante.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.International.Countries.All">
+            <summary>
+            Enumera tutti i Paesi conosciuti.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.EnglishName">
+            <summary>
+                Nome inglese (es: Italy)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.Code">
+            <summary>
+                Codice a 2 caratteri (es: IT)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.Code3">
+            <summary>
+                Codice a 3 caratteri (es: ITA)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.PhonePrefixes">
+            <summary>
+                Prefissi internazionali (es: +39)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.Region">
+            <summary>
+                Regione del mondo, in inglese (es: Europe)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.LatLng">
+            <summary>
+                Coordinate del centro geografico (es: [42.83333333, 12.83333333])
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.TimeZones">
+            <summary>
+                Fusi orari senza ora legale (es: ["UTC+01:00"])
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.NativeName">
+            <summary>
+                Nome del paese nella lingua locale (es: Italia)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.Currencies">
+            <summary>
+                Monete utilizzate.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.Languages">
+            <summary>
+                Lingue parlate.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.Translations">
+            <summary>
+                Nomi del paese in altre lingue.
+                La chiave è il codice lingua a 2 caratteri (es: "de" => "Italien")
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.International.CountryInfo.FlagImageUri">
+            <summary>
+                Url del file svg che rappresenta la bandiera (es: https://restcountries.eu/data/ita.svg)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupItem.Id">
+            <summary>
+            Id dell'oggetto.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupItem.TypeCode">
+            <summary>
+            Eventuale indicatore del tipo di oggetto, per insiemi con ereditarietà.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupItem.DisplayName">
+            <summary>
+            Nome da visualizzare.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupOptions.DefaultOrderBy">
+            <summary>
+            Eventuale elenco dei percorsi di ordinamento.
+            Ad esempio, su un account: "UserName", "Identity.Name"
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupOptions.DefaultOrderByDesc">
+            <summary>
+            Eventuale elenco dei percorsi di ordinamento da ordinare in ordine inverso.
+            I percorsi specificati devono essere inclusi anche nel parametro <see cref="P:WasabiCrm.Base.Api.LookupOptions.DefaultOrderBy"/>.
+            Ad esempio: OrderBy=["Foo", "Bar"], OrderByDesc=["Bar"]
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Api.LookupRequestBase">
+            <summary>
+            Parametri di una richiesta di lookup standard.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupRequestBase.Text">
+            <summary>
+            Testo da cercare.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupRequestBase.DisplayTemplate">
+            <summary>
+            Modello da utilizzare per i risultati.
+            Deve contenere placeholders per i campi dell'insieme che si sta interrogando.
+            Es: "Login: {UserName}, Nominativo: {Identity.FullName}".
+            Se non specificato il server impone un default sensato per l'insieme in questione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupRequestBase.MaxRecordCount">
+            <summary>
+            Se specificato permette di fissare il numero massimo di risultati desiderati.
+            Se non specificato in genere il server impone un default, tipicamente 100.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupRequestBase.TypeCodes">
+            <summary>
+            Se l'insieme che si sta interrogando supporta l'ereditarietà è possibile
+            specificare i tipi di interesse.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupRequestBase.MatchMode">
+            <summary>
+            Modalità di ricerca dei risultati.
+            Per insiemi di grandi dimensioni si consiglia StartsWith, in quanto è l'unico modo di utilizzare
+            eventuali indici e sveltire le ricerche.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupRequestBase.IdMemberPath">
+            <summary>
+            Se specificato è il percorso del campo da restituire come id (default: id).
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupRequestBase.OrderBy">
+            <summary>
+            Eventuale elenco dei percorsi di ordinamento.
+            Ad esempio, su un account: "UserName", "Identity.Name"
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.LookupRequestBase.OrderByDesc">
+            <summary>
+            Eventuale elenco dei percorsi di ordinamento da ordinare in ordine inverso.
+            I percorsi specificati devono essere inclusi anche nel parametro <see cref="P:WasabiCrm.Base.Api.LookupRequestBase.OrderBy"/>.
+            Ad esempio: OrderBy=["Foo", "Bar"], OrderByDesc=["Bar"]
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Api.CustomPropertyFilterGroup">
+            <summary>
+            Rappresenta un insieme di filtri o gruppi di filtri, combinati da un operatore AND o OR.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.CustomPropertyFilterGroup.IsEmpty">
+            <inheritdoc />
+        </member>
+        <member name="T:WasabiCrm.Base.Api.CustomPropertyFilter">
+            <summary>
+            Rappresenta un filtro applicato ad una custom property.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.Id">
+            <summary>
+            Id della property.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.Op">
+            <summary>
+            Operatore da utilizzare.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.Text">
+            <summary>
+            Operando da utilizzare per campi di tipo testo.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.Flag">
+            <summary>
+            Operando da utilizzare per campi di tipo flag.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.Num1">
+            <summary>
+            Operando principale da utilizzare per campi di tipo numerico.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.Num2">
+            <summary>
+            Operando da utilizzare per campi di tipo numerico quando l'operatore prevede due operandi (es: between).
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.Date1">
+            <summary>
+            Operando principale da utilizzare per campi di tipo data.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.Date2">
+            <summary>
+            Operando da utilizzare per campi di tipo data quando l'operatore prevede due operandi (es: between).
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.RefAlias">
+            <summary>
+            Operando da utilizzare per campi di tipo EntityReference.
+            Obbligatorio in abbinamento a RefKey, opzionale in abbianmento a RefDisplay.
+            Può anche essere utilizzato da solo.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.RefKey">
+            <summary>
+            Operando da utilizzare assieme a RefAlias per campi di tipo EntityReference quando si cerca una entity specifica.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.CustomPropertyFilter.RefDisplay">
+            <summary>
+            Operando da utilizzare per campi di tipo EntityReference quando si cerca nella rappresentazione testuale dell'entità riferita.
+            Può essere utilizzato in abbinamento a RefAlias oppure da solo.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Api.QueryStringBuilder">
+            <summary>
+            Costruisce una QueryString a partire da coppie name/value.
+            Quando il "value" è una collection di tipi semplici, la stringa risultante sarà "?name=value1&amp;name=value2&amp;name=valueN".
+            Quando "value" è un oggetto, la stringa risultante sarà "?name.Property1=value1&amp;name.Property2=value2" per tutte le proprietà pubbliche di tipo semplice dell'oggetto fornito.
+            I value sono sottoposti sempre a UrlEncoding.
+            I numeri sono renderizzati con cultura invariant (quindi con il punto decimale).
+            Le date sono renderizzate in formato ISO-8601.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.QueryStringBuilder.#ctor(System.String,System.Object)">
+            <summary>
+            Costruisce una QueryString a partire da coppie name/value.
+            Quando il "value" è una collection di tipi semplici, la stringa risultante sarà "?name=value1&amp;name=value2&amp;name=valueN".
+            Quando "value" è un oggetto, la stringa risultante sarà "?name.Property1=value1&amp;name.Property2=value2" per tutte le proprietà pubbliche di tipo semplice dell'oggetto fornito.
+            I value sono sottoposti sempre a UrlEncoding.
+            I numeri sono renderizzati con cultura invariant (quindi con il punto decimale).
+            Le date sono renderizzate in formato ISO-8601.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.QueryStringBuilder.#ctor(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Costruisce una QueryString a partire da coppie name/value.
+            Quando il "value" è una collection di tipi semplici, la stringa risultante sarà "?name=value1&amp;name=value2&amp;name=valueN".
+            Quando "value" è un oggetto, la stringa risultante sarà "?name.Property1=value1&amp;name.Property2=value2" per tutte le proprietà pubbliche di tipo semplice dell'oggetto fornito.
+            I value sono sottoposti sempre a UrlEncoding.
+            I numeri sono renderizzati con cultura invariant (quindi con il punto decimale).
+            Le date sono renderizzate in formato ISO-8601.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.QueryStringBuilder.And(System.String,System.Object)">
+            <summary>
+            Aggiunge una coppia name/value alla queryString.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.QueryStringBuilder.And(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Aggiunge più coppie name/value alla queryString.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.QueryStringBuilder.ToString">
+            <summary>
+            Renderizza la queryString corrente.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WasabiCrm.Base.Api.QueryStringBuilder.op_Implicit(WasabiCrm.Base.Api.QueryStringBuilder)~System.String">
+            <summary>
+            Cast a string implicito.
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:WasabiCrm.Base.Api.SearchRequestBase">
+            <summary>
+            Parametri di ricerca standard.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.SearchRequestBase.Includes">
+            <summary>
+            Eventuale elenco di percorsi di inclusione (navigation properties) da caricare.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.SearchRequestBase.SkipRecordCount">
+            <summary>
+            Eventuale numero di record da saltare.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.SearchRequestBase.MaxRecordCount">
+            <summary>
+            Eventuale numero massimo di record da restituire.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.SearchRequestBase.OrderBy">
+            <summary>
+            Eventuale elenco dei percorsi di ordinamento.
+            Ad esempio, su un account: "UserName", "Identity.Name"
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.SearchRequestBase.OrderByDesc">
+            <summary>
+            Eventuale elenco dei percorsi di ordinamento da ordinare in ordine inverso.
+            I percorsi specificati devono essere inclusi anche nel parametro <see cref="P:WasabiCrm.Base.Api.SearchRequestBase.OrderBy"/>.
+            Ad esempio: OrderBy=["Foo", "Bar"], OrderByDesc=["Bar"]
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Api.WriteRequestBase">
+            <summary>
+                Parametri standard di una richiesta che crea/modifica qualcosa.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.WriteRequestBase.SkipResult">
+            <summary>
+            Se posto a true indica la volontà di non ricevere indietro l'oggetto creato/modificato.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Api.WriteRequestBase.Includes">
+            <summary>
+                Indica le relazioni da includere nel risultato, quando <see cref="P:WasabiCrm.Base.Api.WriteRequestBase.SkipResult" /> è false.
+                Array vuoto impone sempre nessuna relazione.
+                Null mantiene il comportamento legacy, ove applicabile, mentre equivale ad array vuoto nei metodi nati conoscendo questa opzione.
+                Se <see cref="P:WasabiCrm.Base.Api.WriteRequestBase.SkipResult"/> è true questo parametro non ha effetto.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.AsyncEventArgs">
+            <summary>
+            Classe di supporto agli eventi standard .net in cui è previsto che il publisher
+            attenda il completamento degli handler in modo asincrono.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs.AddPendingOperation(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Aggiunge una funzione che produce un task all'elenco delle operazioni in corso.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs.AllDoneAsync">
+            <summary>
+            Ottiene un task che si completa quando tutte le operazioni asincrone dell'evento sono completate.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.AsyncEventArgs`1">
+            <summary>
+            Classe di supporto agli eventi standard .net in cui è previsto che gli handler possano
+            restituire dati al publisher, che li attende in modo asincrono.
+            </summary>
+            <typeparam name="TResult">Tipo di risultato che può essere restituito dagli handler.</typeparam>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs`1.AddResult(`0)">
+            <summary>
+            Aggiunge un risultato sincrono.
+            Se il valore passato è null questo viene aggiunto comunque.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs`1.AddResults(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Aggiunge un insieme sincrono di risultati.
+            Se l'insieme specificato è null o vuoto non sarà aggiunto nulla.
+            Se l'insieme specificato contiene valori null questi saranno restituiti al publisher come qualsiasi altro valore valido.
+            L'insieme viene enumerato subito.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs`1.AddPendingResult(System.Threading.Tasks.Task{`0})">
+            <summary>
+            Aggiunge un risultato asincrono.
+            Se il task specificato è null non sarà aggiunto nulla e non sarà lanciata alcuna eccezione.
+            Se il valore restituito dal task è null questo sarà restituito al publisher come qualsiasi altro valore valido.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs`1.AddPendingResults(System.Threading.Tasks.Task{System.Collections.Generic.List{`0}})">
+            <summary>
+            Aggiunge un insieme asincrono di risultati.
+            Se il task specificato è null non sarà aggiunto nulla e non sarà lanciata alcuna eccezione.
+            Se la lista restituita dal task è null o vuota non sarà considerata.
+            Se la lista restituita dal task contiene valori null questi saranno restituiti al publisher come qualsiasi altro valore valido.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncEventArgs`1.GetResultsAsync">
+            <summary>
+            Ottiene un task che si completa quando tutti i risultati dell'evento sono disponibili.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.AsyncValidateEventArgs">
+            <summary>
+            Classe di supporto agli eventi di validazione asincrona.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncValidateEventArgs.GetResultsAsync">
+            <summary>
+            Ottiene un task che si completa quando la validazione è terminata.
+            Array vuoto significa nessun errore, altrimenti contiene tutti gli errori riscontrati.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.AsyncValidateEventArgs.GetFormattedErrorMessageAsync(System.String)">
+            <summary>
+            Ottiene un task che si completa quando la validazione è terminata.
+            Il valore restituito è l'eventuale messaggio di errore, ottenuto
+            combinando più messaggi con il separatore specificato (oppure <see cref="P:System.Environment.NewLine"/>
+            se il separatore non viene specificato).
+            In caso di validazione positiva il valore restituito è null.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Attributes.QueryStringIgnoreAttribute">
+            <summary>
+            Se applicato ad una proprietà impedisce che venga considerata da <see cref="T:WasabiCrm.Base.Api.QueryStringBuilder"/>.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Attributes.TypeScriptIgnoreAttribute">
+            <summary>
+            Se applicato a una classe/interfaccia/struct/metodo/proprietà impedisce che venga renderizzata
+            la versione TypeScript.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.CustomJsonContractResolver.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.CustomJsonContractResolver.CreateDictionaryContract(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:WasabiCrm.Base.DataModel.GeoArea">
+            <summary>
+                Rappresenta un'area geografica poligonale.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.GeoArea.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.GeoArea.#ctor(System.Collections.Generic.IEnumerable{WasabiCrm.Base.DataModel.GeoPoint})">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.GeoArea.ToDatabase">
+            <inheritdoc />
+        </member>
+        <member name="T:WasabiCrm.Base.DataModel.GeoData">
+            <summary>
+                Astrazione di dati geografici usata dalle API di WasabiCrm.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.GeoData.ToDatabase">
+            <summary>
+                Converte un dato GeoData nella sua rappresentazione interna (DbGeography).
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.DataModel.GeoPoint">
+            <summary>
+                Rappresenta un punto geografico.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.GeoPoint.ToDatabase">
+            <inheritdoc />
+        </member>
+        <member name="T:WasabiCrm.Base.DataModel.LogicalTimeRange">
+            <summary>
+            Periodi logici.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.#ctor(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <inheritdoc />
+        </member>
+        <member name="P:WasabiCrm.Base.DataModel.TimeRange.IsOpen">
+            <summary>
+                True se non è definito alcun limite.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.DataModel.TimeRange.IsValid">
+            <summary>
+                False se To &lt; From, altrimenti true.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.Contains(System.DateTimeOffset)">
+            <summary>
+                Restituisce true se il valore specificato è compreso nell'intervallo corrente.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.Equals(WasabiCrm.Base.DataModel.TimeRange)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.CompareTo(WasabiCrm.Base.DataModel.TimeRange)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.CompareTo(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.ToString">
+            <summary>
+                Formatta il valore dell'istanza corrente utilizzando le impostazioni predefinite.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeRange.ToString(System.String,System.IFormatProvider)">
+            <summary>
+                Formatta il valore dell'istanza corrente utilizzando la stringa di formato ed il format provider specificati.
+            </summary>
+            <param name="format">
+                Stringa di formato da utilizzare, oppure null per utilizzare quella predefinita.
+            </param>
+            <param name="formatProvider">
+                Il <see cref="T:System.IFormatProvider" /> da usare per formattare i valori, oppure null
+                per ottenere quello associato alle impostazioni internazionali del sistema operativo.
+            </param>
+            <remarks>
+                All'interno della stringa di formato utilizzare {0} per riferirsi al valore di From e {1} per To.
+            </remarks>
+            <example>
+                <code>
+            var r = new DateTimeRange(DateTimeOffset.Now, DateTimeOffset.Now.AddDays(2));
+            string f = "Da {0:dddd d MMMM yyyy} a {1:dddd d MMMM yyyy}";
+            Console.WriteLine(r.ToString(f, null));
+            </code>
+                Il codice sopra riportato restituisce una stringa del tipo: Da giovedì 29 gennaio 2009 a sabato 31 gennaio 2009.
+            </example>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:WasabiCrm.Base.DataModel.TimeTable">
+            <summary>
+            Rappresenta fasce orarie giornaliere per ogni giorno della settimana.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTable.#ctor">
+            <summary>
+            Crea una TimeTable vuota ma completamente inizializzata, basata sul fuso orario corrente.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTable.#ctor(System.TimeSpan)">
+            <summary>
+            Crea una TimeTable vuota ma completamente inizializzata, basata sul fuso orario specificato.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTable.#ctor(WasabiCrm.Base.DataModel.TimeTable)">
+            <summary>
+            Crea una TimeTable copiando i valori di quella specificata.
+            </summary>
+            <param name="other">TimeTable da clonare.</param>
+        </member>
+        <member name="P:WasabiCrm.Base.DataModel.TimeTable.Offset">
+            <summary>
+            Ottiene o imposta lo scostamento orario rispetto a UTC utilizzato in questa tabella oraria.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.DataModel.TimeTable.IsEmpty">
+            <summary>
+            True se questa TimeTable non contiene alcun orario, altrimenti false.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTable.Validate">
+            <summary>
+            Controlla che le fasce orarie siano coerenti e che siano specificati tutti i giorni della settimana.
+            Per indicare che un tal giorno non ci sono fasce orarie occorre quindi che la chiave del giorno sia presente
+            nella TimeTable e che la relativa lista di TimeTableEntry sia vuota.
+            </summary>
+            <returns>Istanza di ValidationResult che riassume gli errori.</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTable.CalculateTimeShift(System.TimeSpan)">
+            <summary>
+            Ottiene una data che rappresenta lo scostamento <paramref name="shift"/> applicato ad "adesso",
+            tenendo però conto delle fasce orarie di questa istanza.
+            </summary>
+            <param name="shift">Scostamento "lavorativo" da calcolare</param>
+            <returns>Data calcolata</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTable.CalculateTimeShift(System.DateTimeOffset,System.TimeSpan)">
+            <summary>
+            Ottiene una data che rappresenta lo scostamento <paramref name="shift"/> applicato a <paramref name="from"/>,
+            tenendo però conto delle fasce orarie di questa istanza.
+            </summary>
+            <param name="from">Data di partenza</param>
+            <param name="shift">Scostamento "lavorativo" da calcolare</param>
+            <returns>Data calcolata</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTable.FromXml(System.Xml.Linq.XElement)">
+            <summary>
+            Crea una TimeTable a partire dall'elemento XML specificato.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTable.ToXml">
+            <summary>
+            Restituisce la rappresentazione XML di questa TimeTable.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTableEntry.#ctor(System.TimeSpan,System.TimeSpan)">
+            <summary>
+              Crea un range orario a partire dall'orario di inizio e da quello di fine.
+            </summary>
+            <param name = "start">Orario di inizio</param>
+            <param name = "end">Orario di fine</param>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTableEntry.#ctor(System.TimeSpan,System.Double)">
+            <summary>
+              Crea un range orario a partire dall'orario di inizio e dalla durata.
+            </summary>
+            <param name = "start">Orario di inizio</param>
+            <param name = "duration">Durata espressa in minuti</param>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTableEntry.System#IComparable#CompareTo(System.Object)">
+            <summary>
+              Confronta l'istanza corrente con un altro oggetto dello stesso tipo.
+            </summary>
+            <returns>
+              Valore integer con segno a 32 bit che indica l'ordine relativo degli oggetti confrontati. Il valore restituito ha i seguenti significati: Valore Significato Minore di zero L'istanza è minore di obj. Zero L'istanza è uguale a obj. Maggiore di zero L'istanza è maggiore di obj. 
+            </returns>
+            <param name = "obj">Oggetto da confrontare con l'istanza. </param>
+            <exception cref = "T:System.ArgumentException">obj non ha lo stesso tipo di questa istanza. </exception>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTableEntry.CompareTo(WasabiCrm.Base.DataModel.TimeTableEntry)">
+            <summary>
+              Confronta l'oggetto corrente con un altro oggetto dello stesso tipo.
+            </summary>
+            <returns>
+              Numero intero con segno a 32 bit che indica l'ordine relativo degli oggetti confrontati. Il valore restituito ha i seguenti significati:ValoreSignificato Minore di zero Questo oggetto è minore del parametro other.Zero Questo oggetto è uguale al parametro other. Maggiore di zero Questo oggetto è maggiore del parametro other. 
+            </returns>
+            <param name = "other">Oggetto da confrontare con l'oggetto corrente.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTableEntry.ToString">
+            <summary>
+              Restituisce il nome completo del tipo di questa istanza.
+            </summary>
+            <returns>
+              Valore <see cref = "T:System.String"></see> contenente un nome completo del tipo.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTableEntry.Equals(WasabiCrm.Base.DataModel.TimeTableEntry)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTableEntry.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DataModel.TimeTableEntry.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.DateHelper.GetDateByLogicalDate(System.String)">
+            <summary>
+            Traduce la data logica in datetimeoffset.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.EntityFramework.Extensions.HasIndex(System.Data.Entity.ModelConfiguration.Configuration.PrimitivePropertyConfiguration,System.Boolean,System.String,System.Int32)">
+            <summary>
+                Aggiunge un indice alla colonna.
+            </summary>
+            <param name="config">Oggetto di configurazione corrente.</param>
+            <param name="unique">True per creare un indice univoco, altrimenti false (default).</param>
+            <param name="name">Nome da dare all'indice. Obbligatorio per indici multi-colonna, altrimenti facoltativo.</param>
+            <param name="order">
+                Ordine della colonna nell'indice. Obbligatorio per indici multi-colonna, altrimenti non va
+                specificato.
+            </param>
+        </member>
+        <member name="M:WasabiCrm.Base.EntityFramework.Extensions.AddIfMissing``1(System.Data.Entity.DbSet{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},``0[])">
+            <summary>
+                Aggiunge le <paramref name="entities" /> al <paramref name="dbSet" /> specificato se non esistono già,
+                utilizzando il criterio specificato da <paramref name="identifierExpression" /> per effettuare la verifica.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="dbSet"></param>
+            <param name="identifierExpression"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:WasabiCrm.Base.EntityFramework.Extensions.AddIfMissingAsync``1(System.Data.Entity.DbSet{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},``0[])">
+            <summary>
+                Aggiunge le <paramref name="entities" /> al <paramref name="dbSet" /> specificato se non esistono già,
+                utilizzando il criterio specificato da <paramref name="identifierExpression" /> per effettuare la verifica.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="dbSet"></param>
+            <param name="identifierExpression"></param>
+            <param name="entities"></param>
+        </member>
+        <member name="M:WasabiCrm.Base.EntityFramework.Extensions.AddOrPatch``1(System.Data.Entity.DbSet{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0}}[])">
+            <summary>
+                Aggiunge le entities definite dalle espressioni <paramref name="generatorExpressions"/> all'insieme <paramref name="dbSet"/>, qualora non esistano già,
+                utilizzando il criterio specificato da <paramref name="identifierExpression" /> per effettuare la verifica.
+                Nel caso in cui una o più entities risultino già esistenti, queste saranno aggiornate limitatamente alle sole proprietà utilizzate nell'espressione
+                di inizializzazione, lasciando inalterate le rimanenti proprietà.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="dbSet"></param>
+            <param name="identifierExpression"></param>
+            <param name="generatorExpressions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WasabiCrm.Base.EntityFramework.Extensions.AddOrPatchAsync``1(System.Data.Entity.DbSet{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``0}}[])">
+            <summary>
+                Aggiunge le entities definite dalle espressioni <paramref name="generatorExpressions"/> all'insieme <paramref name="dbSet"/>, qualora non esistano già,
+                utilizzando il criterio specificato da <paramref name="identifierExpression" /> per effettuare la verifica.
+                Nel caso in cui una o più entities risultino già esistenti, queste saranno aggiornate limitatamente alle sole proprietà utilizzate nell'espressione
+                di inizializzazione, lasciando inalterate le rimanenti proprietà.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="dbSet"></param>
+            <param name="identifierExpression"></param>
+            <param name="generatorExpressions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WasabiCrm.Base.EnumerableExtensions">
+            <summary>
+                Estensioni della classe Enumerable.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.EnumerableExtensions.OrderByTopology``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,System.Collections.Generic.IEnumerable{``1}},System.Boolean)">
+            <summary>
+                Ordina gli elementi dell'insieme in modo tale che, scorrendo l'insieme,
+                le dipendenze di ogni elemento enumerato siano già state enumerate prima.
+                NOTA: non sono ammessi grafi con dipendenze circolari.
+            </summary>
+            <param name="source">Insieme da ordinare.</param>
+            <param name="identitySelector">Funzione che restituisce, per ogni nodo, il valore che lo identifica (o se stesso).</param>
+            <param name="dependencySelector">
+                Funzione di selezione delle dipendenze dell'oggetto <typeparamref name="TNode" /> passato
+                come argomento.
+            </param>
+            <param name="throwOnMissingDependency">True per sollevare un errore se l'insieme non contiene tutte le dipendenze dei propri nodi.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="dependencySelector"/> è null.</exception>
+            <exception cref="T:System.InvalidOperationException">Il grafo <paramref name="source"/> ha dipendenze circolari.</exception>
+        </member>
+        <member name="M:WasabiCrm.Base.GeoDataConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.GeoDataConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.GeoDataConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="P:WasabiCrm.Base.GeoDataConverter.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="F:WasabiCrm.Base.DbGeographyHelpers.SRID">
+            <summary>
+            Spatial Reference System Identifier.
+            For mapping/distance functionality you typically want to use 4326 as this is the format used by most mapping software and geo-location libraries like Google and Bing.
+            The result for SRID 4326 is always in meters.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DbGeographyHelpers.CreatePoint(System.Double,System.Double)">
+            <summary>
+                Crea un'istanza di DbGeography che rappresenta un singolo punto.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.DbGeographyHelpers.CreatePolygon(System.Collections.Generic.IEnumerable{WasabiCrm.Base.DataModel.GeoPoint})">
+            <summary>
+            Crea un'istanza di DbGeography che rappresenta un poligono.
+            Il primo e ultimo vertice devono essere corrispondenti (il poligono deve essere chiuso).
+            </summary>
+            <param name="vertices">Elenco dei vertici nell'ordine corretto.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.DbGeographyHelpers.ToApi(System.Data.Entity.Spatial.DbGeography)">
+            <summary>
+                Converte un dato DbGeography nella sua rappresentazione esterna (API).
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WasabiCrm.Base.ICanBeEmpty">
+            <summary>
+            Descrive un oggetto che può essere vuoto, oltre a null.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.ICanBeEmpty.IsEmpty">
+            <summary>
+            True se questa istanza è da considerare vuota.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.IHaveAttributes">
+            <summary>
+            Descrive un oggetto che ha la possibilità di associare attributi custom per modulo.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.GenericExtensions.GetModuleAttributes``1(WasabiCrm.Base.IHaveAttributes,System.Guid)">
+            <summary>
+            Ottiene gli attributi pertinenti al modulo specificato oppure un nuovo oggetto.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.GenericExtensions.SetModuleAttributes(WasabiCrm.Base.IHaveAttributes,System.Guid,System.Object)">
+            <summary>
+            Imposta gli attributi pertinenti al modulo specificato.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.GenericExtensions.MergeModuleAttributes(WasabiCrm.Base.IHaveAttributes,WasabiCrm.Base.IHaveAttributes)">
+            <summary>
+            Aggiorna sul <paramref name="target"/> gli attributi specificati in <paramref name="source"/>, sostituendo completamente i valori delle chiavi esistenti.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.GenericExtensions.MergeModuleAttributes(WasabiCrm.Base.IHaveAttributes,System.Collections.Generic.Dictionary{System.Guid,System.Object})">
+            <summary>
+            Aggiorna sul <paramref name="target"/> gli attributi specificati in <paramref name="source"/>, sostituendo completamente i valori delle chiavi esistenti.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Name">
+            <summary>
+                Nome inglese (es: Italy)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.TopLevelDomain">
+            <summary>
+                Domini di primo livello (es: [".it"])
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Alpha2Code">
+            <summary>
+                Codice a 2 caratteri (es: IT)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Alpha3Code">
+            <summary>
+                Codice a 3 caratteri (es: ITA)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.CallingCodes">
+            <summary>
+                Prefissi internazionali senza il + (es: 39)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Capital">
+            <summary>
+                Capitale in inglese (es: Rome)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.AltSpellings">
+            <summary>
+                Nomi alternativi (es: ["IT", "Italian Republic", "Repubblica italiana"])
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Region">
+            <summary>
+                Regione del mondo, in inglese (es: Europe)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.SubRegion">
+            <summary>
+                Sotto-regione del mondo, in inglese (es: Southern Europe)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Population">
+            <summary>
+                Numero di abitanti.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.LatLng">
+            <summary>
+                Coordinate del centro geografico (es: [42.83333333, 12.83333333])
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Demonym">
+            <summary>
+                Nome dei residenti in inglese (es: Italian)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Area">
+            <summary>
+                Area in Km2
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Gini">
+            <summary>
+                Boh??
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.TimeZones">
+            <summary>
+                Fusi orari senza ora legale (es: ["UTC+01:00"])
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Borders">
+            <summary>
+                Nazioni confinanti, codici a 3 lettere (es: ["AUT", "FRA", "SMR", "SVN", "CHE", "VAT"])
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.NativeName">
+            <summary>
+                Nome del paese nella lingua locale (es: Italia)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.NumericCode">
+            <summary>
+                Codice numerico (quale standard?) (es: 380)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Currencies">
+            <summary>
+                Monete utilizzate.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Languages">
+            <summary>
+                Lingue parlate.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Translations">
+            <summary>
+                Nomi del paese in altre lingue.
+                La chiave è il codice lingua a 2 caratteri (es: "de" => "Italien")
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Flag">
+            <summary>
+                Url del file svg che rappresenta la bandiera (es: https://restcountries.eu/data/ita.svg)
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.RegionalBlocs">
+            <summary>
+                Blocchi di paesi / alleanze.
+                <list type="unordered">
+                    EU (European Union)
+                    EFTA(European Free Trade Association)
+                    CARICOM(Caribbean Community)
+                    PA(Pacific Alliance)
+                    AU(African Union)
+                    USAN(Union of South American Nations)
+                    EEU(Eurasian Economic Union)
+                    AL(Arab League)
+                    ASEAN(Association of Southeast Asian Nations)
+                    CAIS(Central American Integration System)
+                    CEFTA(Central European Free Trade Agreement)
+                    NAFTA(North American Free Trade Agreement)
+                    SAARC(South Asian Association for Regional Cooperation)
+                </list>
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.International.RestCountries.CountryInfo.Cioc">
+            <summary>
+                Codice Comitato Olimpico Internazionale (es: ITA)
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.JsonExtensions.IsNullOrEmpty(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Indica se il token corrente è null, array vuoto, oggetto vuoto (senza membri) o stringa vuota.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.JsonExtensions.IsNullOrPseudoEmpty(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Simile a <see cref="M:WasabiCrm.Base.JsonExtensions.IsNullOrEmpty(Newtonsoft.Json.Linq.JToken)"/> ma considera vuoti anche:
+            a) gli oggetti contenenti soli membri null, stringhe vuote, array pseudo-vuoti (ricorsivamente) o oggetti pseudo-vuoti (ricorsivamente);
+            b) gli array contenenti soli elementi null, stringhe vuote, array pseudo-vuoti o oggetti pseudo-vuoti.
+            </summary>
+            <example>
+            Questo oggetto è considerato pseudo-vuoto:
+            <code>
+            {
+                "StringValue": "",
+                "NumberValue": null,
+                "ArrayValue": [{ "Foo": null }, {}],
+                "ObjectValue": { "Foo": "", Arr: [""]}
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:WasabiCrm.Base.JsonSettings">
+            <summary>
+            Preset di impostazioni di serializzazione JSON.
+            </summary>
+        </member>
+        <member name="F:WasabiCrm.Base.JsonSettings.WebApi">
+            <summary>
+            Impostazioni utilizzate per la Web API.
+            Preserva i riferimenti, anche circolari; include i valori di default (come "0" e "false");
+            rende minuscole le iniziali dei nomi di campo (tranne le chiavi dei dizionari); non emette i typeName.
+            </summary>
+        </member>
+        <member name="F:WasabiCrm.Base.JsonSettings.SqlServerObject">
+            <summary>
+            Impostazioni utilizzate per memorizzare oggetti su SQL Server.
+            Non preserva i riferimenti (json standard); non include i valori di default (come "0" e "false")
+            per risparmiare spazio; lascia inalterate le iniziali dei nomi di campo; emette i typeName solo
+            se necessario.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.JsonSettings.Clone(Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Ottiene una copia delle impostazioni specificate.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WasabiCrm.Base.PathHelper.MakeAbsolute(System.String)">
+            <summary>
+            Converte il percorso relativo specificato in un percorso assoluto
+            basato sulla root dell'applicazione.
+            Se si passa un percorso già assoluto (inizia per '\' o per '/' o contiene 'X:')
+            questo viene restituito senza modifiche ma con gli slash normalizzati ('\').
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PhoneNumberHelper.NormalizeToInternational(System.String,System.String)">
+            <summary>
+                Restituisce il numero telefonico specificato, assicurandosi che sia qualificato
+                con il prefisso internazionale, aggiungendo se assente quello specificato.
+                Restituisce null se null o stringa vuota.
+                Il formato restituito è sempre "+qualcosa".
+            </summary>
+            <remarks>
+                Attenzione: NON normalizzare i numeri MSISDN con questo metodo, perché li considererebbe
+                privi del prefisso in quanto NON inizia con il + o lo 00.
+                Per normalizzare i numeri MSISDN basta anteporre il +.
+            </remarks>
+            <param name="number">Numero da normalizzare (nazionale o internazionale, no MSISDN)</param>
+            <param name="defaultPrefixOrCountryCode">
+                Prefisso predefinito (accetta sia il + che il doppio zero che direttamente il
+                codice)
+            </param>
+        </member>
+        <member name="M:WasabiCrm.Base.PhoneNumberHelper.DenormalizeFromInternational(System.String,System.String)">
+            <summary>
+            Restituisce il numero fornito, senza il prefisso internazionale se corrisponde al prefisso predefinito.
+            </summary>
+            <param name="number">Numero nazionale o internazionale, con il + o con gli zeri, ma NON in formato MSISDN.</param>
+            <param name="defaultPrefixOrCountryCode">Prefisso o codice predefinito.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.PhoneNumberHelper.NormalizeToMsisdn(System.String,System.String)">
+            <summary>
+                Restituisce il numero telefonico specificato, assicurandosi che sia in formato MSISDN
+                (ovvero country code + number, senza segni più o doppi zeri iniziali).
+                Aggiunge il country code specificato se assente.
+                Restituisce null se null o stringa vuota.
+            </summary>
+            <remarks>
+                Attenzione: non processare numeri che sono già in formato MSISDN poiché verrebbero ulteriormente prefissati con il
+                default.
+            </remarks>
+            <param name="number">Numero da normalizzare (nazionale o internazionale, no MSISDN.</param>
+            <param name="defaultPrefixOrCountryCode">
+                Prefisso predefinito (accetta sia il + che il doppio zero che direttamente il
+                codice)
+            </param>
+        </member>
+        <member name="M:WasabiCrm.Base.PhoneNumberHelper.DenormalizeFromMsisdn(System.String,System.String)">
+            <summary>
+            Restituisce il numero fornito, senza il country code se corrisponde al prefisso predefinito.
+            </summary>
+            <param name="msisdn">Numero in formato MSISDN.</param>
+            <param name="defaultPrefixOrCountryCode">Prefisso o codice predefinito.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.PhoneNumberHelper.TrySplitInternationalPrefix(System.String,System.String@,System.String@)">
+            <summary>
+                Cerca di separare il prefisso internazionale, se specificato, dal numero nazionale. Altrimenti restituisce false.
+                Accetta in input sia il formato con il + che quello con lo 00.
+            </summary>
+            <param name="internationalNumber">Numero internazionale da separare</param>
+            <param name="prefix">Prefisso riconosciuto (con il + iniziale)</param>
+            <param name="nationalNumber">Numero nazionale</param>
+            <returns>True se l'operazione ha avuto successo.</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.PhoneNumberHelper.TrySplitInternationalPrefix(System.String,System.Boolean,System.String@,System.String@)">
+            <summary>
+                Cerca di separare il prefisso/codice internazionale dal numero nazionale.
+                Questo overload permette di specificare se il numero in input debba essere sempre qualificato dal +/00 oppure no.
+                In caso negativo è possibile passare un numero in formato MSISDN (con il codice paese ma senza qualificatore), però bisogna
+                essere certi che il dato contenga sempre e comunque un qualche tipo di prefisso o codice, altrimenti il metodo può produrre
+                risultati errati.
+            </summary>
+            <param name="internationalNumber">Numero internazionale da separare</param>
+            <param name="qualifiedOnly">True per limitare il riconoscimento ai soli numeri che iniziano con il + o con lo 00, altrimenti false (vedi note).</param>
+            <param name="prefix">Prefisso riconosciuto (con il + iniziale)</param>
+            <param name="nationalNumber">Numero nazionale</param>
+            <returns>True se l'operazione ha avuto successo.</returns>
+        </member>
+        <member name="T:WasabiCrm.Base.PredicateBuilder">
+            <summary>
+                Enables the efficient, dynamic composition of query predicates.
+                Credits: https://petemontgomery.wordpress.com/2011/02/10/a-universal-predicatebuilder/
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.True``1">
+            <summary>
+                Creates a predicate that evaluates to true.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.False``1">
+            <summary>
+                Creates a predicate that evaluates to false.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.Create``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+                Creates a predicate expression from the specified lambda expression.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+                Combines the first predicate with the second using the logical "and".
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+                Combines the first predicate with the second using the logical "or".
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.Not``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+                Negates the predicate.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.Compose``1(System.Linq.Expressions.Expression{``0},System.Linq.Expressions.Expression{``0},System.Func{System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.Expression})">
+            <summary>
+                Combines the first expression with the second using the specified merge function.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.ConvertParameter``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Converte un'espressione "(TSource x) => bool" in un'espressione "(TTarget x) => bool", sostituendo tutte le occorrenze
+            del parametro "x" con un cast "(TSource)x".
+            Es: converte "(Identity x) => x.IsBusiness" in "(object x) => ((Identity)x).IsBusiness".
+            Se quest'ultima espressione venisse riconvertita al contrario, al posto del doppio cast verrebbe ripristinato il tipo originale.
+            Quindi non "(Identity x) => ((Identity)((object)x)).IsBusiness" ma nuovamente "(Identity x) => x.IsBusiness"!
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.ParameterConverter.#ctor(System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.ParameterConverter.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.PredicateBuilder.ParameterConverter.VisitUnary(System.Linq.Expressions.UnaryExpression)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Reflection.TypeDescriptor.#ctor(WasabiCrm.Base.Reflection.DataType,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Reflection.TypeDescriptor.#ctor(WasabiCrm.Base.Reflection.TypeDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Reflection.TypeDescriptor.#ctor(System.String,System.Collections.Generic.List{WasabiCrm.Base.Reflection.FieldDescriptor})">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Reflection.TypeDescriptor.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Reflection.TypeDescriptor.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:WasabiCrm.Base.RetryHelper">
+            <summary>
+            Utility per tentare un'operazione più volte in caso di errore,
+            con politica di retry configurabile.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.IRetryPolicy">
+            <summary>
+            Incapsula le regole che determinano se e quando ritentare un'operazione.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.IRetryPolicy.GetRetryDelay(System.Exception,System.Int32)">
+            <summary>
+            Ottiene un tempo da attendere prima di ritentare l'operazione.
+            Restituire null se l'operazione non deve essere ritentata.
+            </summary>
+            <param name="ex">Errore che si è verificato.</param>
+            <param name="failureCount">Numero di tentativi falliti.</param>
+        </member>
+        <member name="T:WasabiCrm.Base.IRetryPolicy`1">
+            <summary>
+            Incapsula le regole che determinano se e quando ritentare un'operazione.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.IRetryPolicy`1.GetRetryDelay(System.Exception,System.Int32,`0)">
+            <summary>
+            Ottiene un tempo da attendere prima di ritentare l'operazione.
+            Restituire null se l'operazione non deve essere ritentata.
+            </summary>
+            <param name="ex">Errore che si è verificato.</param>
+            <param name="failureCount">Numero di tentativi falliti.</param>
+            <param name="context">Dati aggiuntivi.</param>
+        </member>
+        <member name="T:WasabiCrm.Base.RetryPolicyBase">
+            <summary>
+            Incapsula le regole che determinano se e quando ritentare un'operazione.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.RetryPolicyBase.GetRetryDelay(System.Exception,System.Int32)">
+            <summary>
+            Ottiene un tempo da attendere prima di ritentare l'operazione.
+            Restituire null se l'operazione non deve essere ritentata.
+            L'implementazione predefinita determina se l'eccezione è tra quelle previste mediante
+            chiamata a <see cref="M:WasabiCrm.Base.RetryPolicyBase.IsMatch(System.Exception)"/>, quindi ottiene gli intervalli di attesa tramite
+            chiamata a <see cref="M:WasabiCrm.Base.RetryPolicyBase.GetIntervals"/> e se sono previsti ulteriori tentativi restituisce
+            l'intervallo trovato.
+            </summary>
+            <param name="ex">Errore che si è verificato.</param>
+            <param name="failureCount">Numero di tentativi falliti.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.RetryPolicyBase.IsMatch(System.Exception)">
+            <summary>
+            Sovrascrivere per determinare se l'eccezione è tra quelle per cui vale la pena ritentare.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.RetryPolicyBase.GetIntervals">
+            <summary>
+            Restituisce una lista di intervalli da attendere, in ordine di FailureCount.
+            L'implementazione predefinita prevede: [3", 5", 10"].
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WasabiCrm.Base.RetryPolicyBase`1">
+            <summary>
+            Incapsula le regole che determinano se e quando ritentare un'operazione.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.RetryPolicyBase`1.GetRetryDelay(System.Exception,System.Int32,`0)">
+            <summary>
+            Ottiene un tempo da attendere prima di ritentare l'operazione.
+            Restituire null se l'operazione non deve essere ritentata.
+            L'implementazione predefinita determina se l'eccezione è tra quelle previste mediante
+            chiamata a <see cref="M:WasabiCrm.Base.RetryPolicyBase`1.IsMatch(System.Exception,`0)"/>, quindi ottiene gli intervalli di attesa tramite
+            chiamata a <see cref="M:WasabiCrm.Base.RetryPolicyBase`1.GetIntervals(`0)"/> e se sono previsti ulteriori tentativi restituisce
+            l'intervallo trovato.
+            </summary>
+            <param name="ex">Errore che si è verificato.</param>
+            <param name="failureCount">Numero di tentativi falliti.</param>
+            <param name="context">Dati aggiuntivi.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.RetryPolicyBase`1.IsMatch(System.Exception,`0)">
+            <summary>
+            Sovrascrivere per determinare se l'eccezione è tra quelle per cui vale la pena ritentare.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.RetryPolicyBase`1.GetIntervals(`0)">
+            <summary>
+            Restituisce una lista di intervalli da attendere, in ordine di FailureCount.
+            L'implementazione predefinita prevede: [3", 5", 10"].
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.ActivationDate">
+            <summary>
+            TimeStamp dell'attivazione del task. Al termine sarà impostato come <see cref="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.LastRunDate"/> ed eventualmente <see cref="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.LastSuccessDate"/>.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.LastRunDate">
+            <summary>
+            TimeStamp dell'ultima esecuzione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.LastSuccessDate">
+            <summary>
+            TimeStamp dell'ultima esecuzione con successo.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.LastExecutionSucceeded">
+            <summary>
+            True se l'ultima esecuzione ha avuto successo, false se è stata interrotta o terminata in errore.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.LastExecutionWasCanceled">
+            <summary>
+            True se l'ultima esecuzione è stata interrotta.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.LastExecutionError">
+            <summary>
+            Valorizzato con il ToString() dell'eventuale errore che ha causato l'interruzione dell'ultima esecuzione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.CancellationToken">
+            <summary>
+            Utilizzare il metodo <see cref="M:System.Threading.CancellationToken.ThrowIfCancellationRequested"/> periodicamente per
+            interrompere con grazia il task se richiesto da interfaccia utente.
+            La chiamata, nel caso, solleva una <see cref="T:System.OperationCanceledException"/>.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.Parameters">
+            <summary>
+            Ottiene i parametri con cui è stato lanciato questo task.
+            Utilizzare i metodi <see cref="M:WasabiCrm.Base.Scheduler.ScheduledTaskBase.GetParameter``1(System.String)"/> o <see cref="M:WasabiCrm.Base.Scheduler.ScheduledTaskBase.GetParameterOrDefault``1(System.String,``0)"/> per comodità di recupero
+            nel formato nativo e per migliorare il messaggio di errore nel caso non vengano specificati nel file di configurazione.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Scheduler.ScheduledTaskBase.CustomState">
+            <summary>
+            Ottiene o imposta un xml custom per questo task, memorizzato nel file di stato e recuperabile alla prossima esecuzione.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Scheduler.ScheduledTaskBase.GetParameter``1(System.String)">
+            <summary>
+            Ottiene il parametro specificato, convertito nel tipo richiesto.
+            Se il parametro è assente viene lanciata una <see cref="T:System.Collections.Generic.KeyNotFoundException"/>.
+            </summary>
+            <typeparam name="T">Tipo di destinazione</typeparam>
+            <param name="name">Nome del parametro</param>
+        </member>
+        <member name="M:WasabiCrm.Base.Scheduler.ScheduledTaskBase.GetParameterOrDefault``1(System.String)">
+            <summary>
+            Ottiene il parametro specificato, convertito nel tipo richiesto.
+            Se il parametro è assente viene restituito il valore predefinito previsto dal tipo <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Tipo di destinazione</typeparam>
+            <param name="name">Nome del parametro</param>
+        </member>
+        <member name="M:WasabiCrm.Base.Scheduler.ScheduledTaskBase.GetParameterOrDefault``1(System.String,``0)">
+            <summary>
+            Ottiene il parametro specificato, convertito nel tipo richiesto.
+            Se il parametro è assente viene restituito il valore specificato nel parametro <paramref name="defaultValue"/>.
+            </summary>
+            <typeparam name="T">Tipo di destinazione</typeparam>
+            <param name="name">Nome del parametro</param>
+            <param name="defaultValue">Valore predefinito se parametro assente</param>
+        </member>
+        <member name="M:WasabiCrm.Base.Scheduler.ScheduledTaskBase.OnExecute">
+            <summary>
+            Codice del task.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Security.AuthenticationException">
+            <summary>
+            Si verifica in caso di problemi di autenticazione e corrisponde al codice di stato HTTP 401.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Security.AuthorizationException">
+            <summary>
+            Si verifica quando l'utente non ha i permessi per eseguire una certa operazione e corrisponde al codice di stato HTTP 403.
+            </summary>
+        </member>
+        <member name="T:WasabiCrm.Base.Security.PasswordSettings">
+            <summary>
+            Rappresenta le impostazioni che riguardano i criteri di complessità delle password, la loro durata, eccetera.
+            </summary>
+        </member>
+        <member name="F:WasabiCrm.Base.Security.PasswordSettings.Default">
+            <summary>
+            Impostazioni predefinite del sistema.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Security.PasswordSettings.MinLength">
+            <summary>
+            Lunghezza minima delle password.
+            Default/minimo: 3
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Security.PasswordSettings.MinUppercaseChars">
+            <summary>
+            Numero minimo di caratteri maiuscoli.
+            Default: 0
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Security.PasswordSettings.MinSymbolChars">
+            <summary>
+            Numero minimo di caratteri simbolici (non alfanumerici).
+            Default: 0
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Security.PasswordSettings.MinNumericChars">
+            <summary>
+            Numero minimo di caratteri numerici.
+            Default: 0
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Security.PasswordSettings.Lifetime">
+            <summary>
+            Durata della password espressa in giorni.
+            Default: 60, minimo: 1, massimo: 180 (sei mesi).
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Security.PasswordSettings.MaxAllowedLoginFailures">
+            <summary>
+            Numero massimo di tentativi di accesso falliti ammessi prima che l'account venga bloccato.
+            Default: 15, minimo: -1 (nessun limite), 0 = blocco al primo sbaglio, N = N sbagli tollerati.
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Security.PasswordSettings.HistoryLength">
+            <summary>
+            Numero di password precedenti non riutilizzabili.
+            Default: 1, minimo: 0, massimo: 20.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Security.PasswordSettings.EnsureValid">
+            <summary>
+            Verifica che i parametri siano nei range previsti e in caso contrario li sistema.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.StringExtensions.MaxLength(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Limita una stringa al numero di caratteri specificato e opzionalmente
+            aggiunge i puntini di sospensione (conteggiati nel numero massimo di caratteri).
+            </summary>
+            <param name="source">Stringa da limitare</param>
+            <param name="length">Numero di caratteri ammessi</param>
+            <param name="ellipsis">Se aggiungere o meno i puntini di sospensione in fondo alla stringa limitata (default: false)</param>
+            <returns></returns>
+        </member>
+        <member name="M:WasabiCrm.Base.StringExtensions.Contains(System.String,System.String,System.StringComparison)">
+            <summary>
+            Versione di String.Contains() che accetta il tipo di paragone da effettuare.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.StringExtensions.LeftOf(System.String,System.String,System.Boolean,System.StringComparison)">
+            <summary>
+            Individua la prima occorrenza di token nella stringa source e restituisce
+            la sottostringa più a sinistra di esso, includendo opzionalmente il token stesso.
+            Se il token non fa parte di source restituisce source.
+            Se il token compare all'inizio della stringa restituisce stringa vuota (o il token se inclusive = true).
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.StringExtensions.LeftOfLast(System.String,System.String,System.Boolean,System.StringComparison)">
+            <summary>
+            Individua l'ultima occorrenza di token nella stringa source e restituisce
+            la sottostringa più a sinistra di esso, includendo opzionalmente il token stesso.
+            Se il token non fa parte di source restituisce source.
+            Se l'unico token compare all'inizio della stringa restituisce stringa vuota (o il token se inclusive = true).
+            Se l'ultimo token compare alla fine della stringa e l'opzione inclusive è true restituisce source.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.StringExtensions.RightOfLast(System.String,System.String,System.Boolean,System.StringComparison)">
+            <summary>
+            Individua l'ultima occorrenza di token nella stringa source e restituisce
+            la sottostringa più a destra di esso, includendo opzionalmente il token stesso.
+            Se il token non fa parte di source restituisce source.
+            Se il token compare alla fine della stringa restituisce stringa vuota (o il token se inclusive = true).
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.StringExtensions.RightOf(System.String,System.String,System.Boolean,System.StringComparison)">
+            <summary>
+            Individua la prima occorrenza di token nella stringa source e restituisce
+            la sottostringa più a destra di esso, includendo opzionalmente il token stesso.
+            Se il token non fa parte di source restituisce source.
+            Se l'unico token compare alla fine della stringa restituisce stringa vuota (o il token se inclusive = true).
+            Se il primo token compare all'inizio della stringa e l'opzione inclusive è true restituisce source.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.StringExtensions.TrimOrNull(System.String)">
+            <summary>
+            Restituisce la stringa specificata senza spazi iniziali e finali, solo se dopo il trim contiene ancora qualcosa.
+            Altrimenti restituisce null.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.TaskExtensions.OnThreadPool(System.Threading.Tasks.Task)">
+            <summary>
+            Sinonimo di Task.ConfigureAwait(false).
+            Forza la continuazione su un thread della ThreadPool anzichè sul thread che ha iniziato il task.
+            Da utilizzare nei metodi async pubblici da libreria, sul primo await che si incontra, per evitare possibili deadlock
+            quando il chiamante è costretto ad attendere il risultato in modo sincrono (quindi bloccando il thread chiamante, che
+            non potrebbe eseguire la continuazione dopo await).
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.TaskExtensions.OnThreadPool``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Sinonimo di Task{T}.ConfigureAwait(false).
+            Forza la continuazione su un thread della ThreadPool anzichè sul thread che ha iniziato il task.
+            Da utilizzare nei metodi async pubblici da libreria, sul primo await che si incontra, per evitare possibili deadlock
+            quando il chiamante è costretto ad attendere il risultato in modo sincrono (quindi bloccando il thread chiamante, che
+            non potrebbe eseguire la continuazione dopo await).
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.TaskExtensions.IgnoreExceptions(System.Threading.Tasks.Task)">
+            <summary>Suppresses default exception handling of a Task that would otherwise reraise the exception on the finalizer thread.</summary>
+            <param name="task">The Task to be monitored.</param>
+            <returns>The original Task.</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.TaskExtensions.IgnoreExceptions(System.Threading.Tasks.Task,System.Action{System.Exception})">
+            <summary>Suppresses default exception handling of a Task that would otherwise reraise the exception on the finalizer thread.</summary>
+            <param name="task">The Task to be monitored.</param>
+            <param name="logAction">An action to log the exception when it's detected.</param>
+            <returns>The original Task.</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.TaskExtensions.IgnoreExceptions``1(System.Threading.Tasks.Task{``0})">
+            <summary>Suppresses default exception handling of a Task that would otherwise reraise the exception on the finalizer thread.</summary>
+            <param name="task">The Task to be monitored.</param>
+            <returns>The original Task.</returns>
+        </member>
+        <member name="M:WasabiCrm.Base.TaskExtensions.IgnoreExceptions``1(System.Threading.Tasks.Task{``0},System.Action{System.Exception})">
+            <summary>Suppresses default exception handling of a Task that would otherwise reraise the exception on the finalizer thread.</summary>
+            <param name="task">The Task to be monitored.</param>
+            <param name="logAction">An action to log the exception when it's detected.</param>
+            <returns>The original Task.</returns>
+        </member>
+        <member name="T:WasabiCrm.Base.Threading.Dispatcher">
+            <summary>
+            DA TESTARE!
+            Implementa una coda di lavoro su singolo thread dedicato.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Create(System.Nullable{System.Int32},System.String)">
+            <summary>
+            Crea e avvia un nuovo Dispatcher su un thread dedicato.
+            </summary>
+            <param name="queueLength">Lunghezza massima della coda, oppure null.</param>
+            <param name="threadName">Nome da attribuire al thread, oppure null.</param>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.#ctor(System.Nullable{System.Int32},System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Start">
+            <summary>
+            Avvia le operazioni.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Send(System.Action)">
+            <summary>
+            Invia una Action al dispatcher, bloccando il thread chiamante fintanto che l'azione
+            non è stata accodata, quindi ritorna senza attenderne l'effettiva esecuzione.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Send(System.Action,System.Threading.CancellationToken)">
+            <summary>
+            Invia una Action al dispatcher, bloccando il thread chiamante fintanto che l'azione
+            non è stata accodata o l'operazione non viene annullata, quindi ritorna senza attenderne l'effettiva esecuzione.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Invoke(System.Action)">
+            <summary>
+            Accoda una Action al dispatcher, bloccando il thread chiamante fintanto che l'azione
+            non è stata eseguita.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Invoke(System.Action,System.Threading.CancellationToken)">
+            <summary>
+            Accoda una Action al dispatcher, bloccando il thread chiamante fintanto che l'azione
+            non è stata eseguita. Permette di interrompere l'operazione di accodamento, ma non
+            l'esecuzione della Action una volta che questa è stata accodata.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Invoke``1(System.Func{``0})">
+            <summary>
+            Accoda una Function al dispatcher, bloccando il thread chiamante fintanto che la funzione
+            non è stata eseguita e ne restituisce il risultato.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Invoke``1(System.Func{``0},System.Threading.CancellationToken)">
+            <summary>
+            Accoda una Function al dispatcher, bloccando il thread chiamante fintanto che la funzione
+            non è stata eseguita e ne restituisce il risultato. Permette di interrompere l'operazione di accodamento, ma non
+            l'esecuzione della Function una volta che questa è stata accodata.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.InvokeAsync(System.Action)">
+            <summary>
+            Versione asincrona di <see cref="M:WasabiCrm.Base.Threading.Dispatcher.Invoke(System.Action)"/>
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.InvokeAsync(System.Action,System.Threading.CancellationToken)">
+            <summary>
+            Versione asincrona di <see cref="M:WasabiCrm.Base.Threading.Dispatcher.Invoke(System.Action,System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.InvokeAsync``1(System.Func{``0})">
+            <summary>
+            Versione asincrona di <see cref="M:WasabiCrm.Base.Threading.Dispatcher.Invoke``1(System.Func{``0})"/>
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.InvokeAsync``1(System.Func{``0},System.Threading.CancellationToken)">
+            <summary>
+            Versione asincrona di <see cref="M:WasabiCrm.Base.Threading.Dispatcher.Invoke``1(System.Func{``0},System.Threading.CancellationToken)"/>
+            </summary>
+        </member>
+        <member name="P:WasabiCrm.Base.Threading.Dispatcher.State">
+            <summary>
+            Ottiene lo stato corrente del thread associato al dispatcher.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.ShutdownAsync">
+            <summary>
+            Termina le operazioni in modo asincrono.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Shutdown">
+            <summary>
+            Termina le operazioni in modo sincrono.
+            Equivalente a <see cref="M:WasabiCrm.Base.Threading.Dispatcher.Dispose"/>.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.Dispose">
+            <summary>
+            Termina le operazioni in modo sincrono.
+            </summary>
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.DispatcherItem.#ctor(System.Action,System.Threading.Tasks.TaskCompletionSource{System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.Dispatcher.DispatcherItem.#ctor(System.Func{System.Object},System.Threading.Tasks.TaskCompletionSource{System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.ResourceSynchronizer`1.Releaser.#ctor(WasabiCrm.Base.Threading.ResourceSynchronizer{`0},`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.Threading.ResourceSynchronizer`1.Releaser.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:WasabiCrm.Base.TypeExtensions.GetSimpleAssemblyQualifiedName(System.Type)">
+            <summary>
+            Ottiene il nome completo del tipo, qualificato con il nome semplice dell'assembly che lo contiene (es: Namespace.Class,Assembly).
+            Se il tipo fa parte di "mscorlib" allora sarà restituito solo il FullName.
+            </summary>
+        </member>
+    </members>
+</doc>
