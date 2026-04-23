@@ -133,7 +133,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         private int mConversationId = 0;
 
         private string messagePath = "";
-        string fileNameSilence = ""; // file to play silence during ASR with full path
+        string fileNameSilence = ""; 
         string fileNameBeep = "";
         IvrIFlow ivrIFlow;
         private string answerDone = "";
