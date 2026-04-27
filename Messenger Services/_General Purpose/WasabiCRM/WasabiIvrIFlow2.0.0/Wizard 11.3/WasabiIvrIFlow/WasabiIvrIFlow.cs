@@ -35,10 +35,10 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
         "WasabiIvrIFlow.WasabiIvrIFlowRes",                            // ResourcePrefix
         ApplicationSubNames.Phone)]                                    // ApplicationSubName
     [PortAttribute("inputport", 1, Direction.input, 1)]
-    [PortAttribute("OK", 2, Direction.output, 2, "NextService")]
+    //[PortAttribute("OK", 2, Direction.output, 2, "NextService")]
     [PortAttribute("Terminated", 3, Direction.output, 3, "NextServiceTerminated")]
     [PortAttribute("Operator", 4, Direction.output, 4, "NextServiceOperator")]
-    [PortAttribute("NoSelection", 5, Direction.output, 5, "NextServiceNoSelection")]    
+    //[PortAttribute("NoSelection", 5, Direction.output, 5, "NextServiceNoSelection")]    
     [PortAttribute("Error", 6, Direction.output, 6, "NextServiceError")]
     [PropertyAttribute("WS_URL", "", false)]
     [PropertyAttribute("WS_API_ID", "", false)]

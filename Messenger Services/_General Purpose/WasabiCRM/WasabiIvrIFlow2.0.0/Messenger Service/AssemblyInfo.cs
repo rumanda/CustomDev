@@ -16,9 +16,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("WasabiIvrIFlow.CService")]
 [assembly: AssemblyProduct("WasabiIvrIFlow.CService")]
 
-[assembly: AssemblyVersion("2.0.0.22")]
+[assembly: AssemblyVersion("2.0.0.26")]
 
-[assembly: AssemblyFileVersion("2.0.0.22")]
+[assembly: AssemblyFileVersion("2.0.0.26")]
 [assembly: AssemblyInformationalVersion(AssemblyInfo.ProductVersion)]
 
 #region Build Configuration

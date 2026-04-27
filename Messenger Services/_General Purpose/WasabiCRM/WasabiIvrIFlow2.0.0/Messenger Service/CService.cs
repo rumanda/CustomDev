@@ -15,6 +15,7 @@
 using Ifm.Components.Messenger.Blocks.Interfaces;
 using Ifm.Components.Messenger.Blocks.Utilities;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -39,25 +40,16 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         private const string prmWasabiTimeout = "WS_TIMEOUT";
         private const string prmFlowId = "FlowId";
 
-        //private const string prmUserInputRequired = "UserInputRequired";
-        //private const string prmUserInputNumeric = "UserInputNumeric";
-        //private const string prmUserInputMaxLength = "UserInputMaxLength";
-        //private const string prmCurrentStepType = "CurrentStepType";
-        //private const string prmIsTerminated = "IsTerminated";
-        //private const string prmIsError = "IsError";
-        //private const string prmIsTransferToHumanAgent = "IsTransferToHumanAgent";
         private const string prmMaxRetryTel = "MaxRetryTel";
         private const string prmTelefonico = "Telefonico";
         private const string prmCHATtimeout = "CHATtimeout";
 
         private const string prmMessagesPath = "MessagesPath";       // Folder contenente i messaggi da suonare (WaitMessage.wav e WaitMusic.wav)
-        //private const string prmQuestionText = "QuestionText";       // Testo domanda da fare (usa TTS sempre che non sia valorizzato QUestionFile"      
-        //private const string prmAnswerPrefix = "AnswerPrefix";       // Prefisso trasfer properties che contengono counter e valori 
         private const string prmTPLastAnswer = "TPLastAnswer";       // Nome transfer property in cui salvare l'ultima risposta data
         private const string prmUseASRForInput = "UseASRForInput";   // configurazione che indica se usare ASR (se no usa DTMF)
-        private const string prmNextService = "NextService";                        // Nome servizio successivo 
+        //private const string prmNextService = "NextService";                        // Nome servizio successivo 
         private const string prmNextServiceTerminated = "NextServiceTerminated";          // Nome servizio successivo su Terminated
-        private const string prmNextServiceNoSelection = "NextServiceNoSelection"; // Nome servizio successivo su nessuna scelta
+        //private const string prmNextServiceNoSelection = "NextServiceNoSelection"; // Nome servizio successivo su nessuna scelta
         private const string prmNextServiceTransferToOperator = "NextServiceOperator";
         private const string prmNextServiceError = "NextServiceError";             // Nome servizio successivo su Errore
         private const string prmEngineNameTTS = "EngineNameTTS";           // Engine Name TTS
@@ -133,14 +125,14 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         private int mConversationId = 0;
 
         private string messagePath = "";
-        string fileNameSilence = ""; 
+        string fileNameSilence = ""; // file to play silence during ASR with full path
         string fileNameBeep = "";
         IvrIFlow ivrIFlow;
         private string answerDone = "";
         private string TPLastAnswer = "";
-        private string nextService = "";
+        //private string nextService = "";
         private string nextServiceTerminated = "";
-        private string nextServiceNoSelection = "";
+        //private string nextServiceNoSelection = "";
         private string nextServiceTransferToOperator = "";
         private string nextServiceError = "";
         private string engineNameTTS = "";
@@ -321,9 +313,9 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             }
 
             TPLastAnswer = mTools.GetParamValue(prmTPLastAnswer);
-            nextService = mTools.GetParamValue(prmNextService);
+            //nextService = mTools.GetParamValue(prmNextService);
             nextServiceTerminated = mTools.GetParamValue(prmNextServiceTerminated);
-            nextServiceNoSelection = mTools.GetParamValue(prmNextServiceNoSelection);            
+            //nextServiceNoSelection = mTools.GetParamValue(prmNextServiceNoSelection);            
             nextServiceError = mTools.GetParamValue(prmNextServiceError);
             nextServiceTransferToOperator = mTools.GetParamValue(prmNextServiceTransferToOperator);
             mTools.LogString("Initialize - End");
@@ -400,7 +392,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                             // se API Wasabi vecchia versione (WasabiCrm.IFlow.Api vers < 1.12.0) non ha IsTransferToHumanAgent, gestisco i trasferimenti in base al CurrentStepType
                             if (ivrIFlow.IsTransferToHumanAgent == null)
                             {
-                                mTools.LogString("Execute - IsTransferToHumanAgent = null (WasabiCrm.IFlow.Api vers < 1.12.0");
+                                mTools.LogString("Execute - IsTransferToHumanAgent = null (WasabiCrm.IFlow.Api vers < 1.12.0)");
                                 if (ivrIFlow.CurrentStepType == CurrentStepType_Type.TrasferimentoBot)
                                 {
                                     // IFlow.TransferToFlow non dovrebbe capitare
@@ -748,10 +740,10 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         }
         public void AsrRecognitionEvent(int eventType)
         {
-            mTools.LogString($"Received AsrRecognitionEvent - EventType : {eventType} - isSecondAsyncPlay : {mSecondAsyncPlay}");
+            mTools.LogString($"AsrRecognitionEvent - EventType : {eventType} - isSecondAsyncPlay : {mSecondAsyncPlay}");
             if ((!mSecondAsyncPlay) && (eventType == 1))
             {
-                mTools.LogString($"Received AsrRecognitionEvent - firstAsyncPlay and stopPrompt >> stopVoice");
+                mTools.LogString($"AsrRecognitionEvent - firstAsyncPlay and stopPrompt >> stopVoice");
                 mHandler.stopVoice();
             }
         }
@@ -783,15 +775,18 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
 
         private void playOnlyTTS()
         {
-            mTools.LogString($"Execute - playOnlyTTS TTS: {ivrIFlow.QuestionText}");
+            mTools.LogString($"playOnlyTTS - TTS: {ivrIFlow.QuestionText}");
+            Stopwatch swLog = Stopwatch.StartNew();
             PlayStringTTS(ivrIFlow.QuestionText, "@", false);
+            swLog.Stop();
+            mTools.LogString($"playOnlyTTS - [playOnlyTTS][TIMER][ms] elapsed={swLog.ElapsedMilliseconds}");
             mHandler.lhASRTTSCtrl.DeallocateEngine();
             return;
         }
 
         private void writeOnlyCHAT()
         {
-            mTools.LogString($"Execute - writeOnlyCHAT text: {ivrIFlow.QuestionText}");
+            mTools.LogString($"writeOnlyCHAT - text: {ivrIFlow.QuestionText}");
             if (ivrIFlow.QuestionText.Length > 0)
                 mHandler.WriteChatMessage(CHATmessage);
             return;
@@ -802,9 +797,9 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             string answer;
             string questionTextWithAnswers;
 
-            mTools.LogString("Execute - playAndRecognizeDTMF Begin");
+            mTools.LogString("playAndRecognizeDTMF - Begin");
          
-            mTools.LogString($"Execute - playAndDTMFInput TTS: {ivrIFlow.QuestionText}");
+            mTools.LogString($"playAndDTMFInput TTS: {ivrIFlow.QuestionText}");
             if (ivrIFlow.IsUserInputNumeric)
             {
                 PlayStringTTS(ivrIFlow.QuestionText, "@", false);
@@ -814,13 +809,12 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                 questionTextWithAnswers = ivrIFlow.AddAvailableAnswersToQuestionTextDTMF(TTS_DTMF_MenuBegin, TTS_DTMF_MenuFor, TTS_DTMF_NumericMenuBegin, TTS_DTMF_NumericMenuAnd, TTS_DTMF_Numeric10);
                 PlayStringTTS(questionTextWithAnswers, "@", false);
             }
-            mTools.LogString($"Execute - playAndRecognizeDTMF - AnswerMaxDigitsDTMF : {ivrIFlow.AnswerMaxDigitsDTMF}");
-            mTools.LogString($"Execute - playAndRecognizeDTMF - DTMFMaxWaitTime : {DTMFMaxWaitTime}");
+            mTools.LogString($"playAndRecognizeDTMF -  DTMFMaxWaitTime : {DTMFMaxWaitTime}; AnswerMaxDigitsDTMF : {ivrIFlow.AnswerMaxDigitsDTMF}");
             sceltaDTMF = mHandler.getDigits("", 0, null, ivrIFlow.AnswerMaxDigitsDTMF, "", DTMFMaxWaitTime, DTMFMaxWaitTime, false);
-            mTools.LogString($"Execute - playAndRecognizeDTMF - selected : {sceltaDTMF}");
+            mTools.LogString($"playAndRecognizeDTMF - selected : {sceltaDTMF}");
 
             mHandler.lhASRTTSCtrl.DeallocateEngine();
-            mTools.LogString($"Execute - playAndRecognizeDTMF - ConvertDTMFToAnswer");
+            mTools.LogString($"playAndRecognizeDTMF - ConvertDTMFToAnswer");
             if (ivrIFlow.IsUserInputNumeric)
             {
                 answer = sceltaDTMF;
@@ -844,13 +838,15 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             {
                 mSecondAsyncPlay = false;
                 dictAnswers = ivrIFlow.AddAvailableAnswerToASRDict();               
-                mTools.LogString($"Execute - playAndRecognizeASR TTS: {ivrIFlow.QuestionText}");
+                mTools.LogString($"playAndRecognizeASR TTS: {ivrIFlow.QuestionText}");
                 questionTextWithAnswers = ivrIFlow.AddAvailableAnswersToQuestionTextASR(TTS_ASR_MenuBegin, TTS_ASR_NumericMenuBegin, TTS_ASR_NumericMenuAnd);
                 PlayStringTTS(questionTextWithAnswers, "", true);
                 mInsideRecognize = true;
                 mTools.LogString($"playAndRecognizeASR - Start RecognizeStringFromListEx");
-                //recognized = mHandler.lhASRTTSCtrl.RecognizeStringFromListEx(ASRConfidenceThreshold, ASRMaxSilence, ASRLookAheadTime, false, true, dictAnswers, ASRBeepEnable, "").Trim();
+                Stopwatch swLog = Stopwatch.StartNew();
                 recognized = mHandler.lhASRTTSCtrl.RecognizeStringFromListEx(ASRConfidenceThreshold, ASRMaxSilence, ASRLookAheadTime, false, true, dictAnswers, false, "").Trim();
+                swLog.Stop();
+                mTools.LogString($"Execute - [RecognizeStringFromListEx][TIMER][ms] elapsed={swLog.ElapsedMilliseconds}");
 
                 HelperClass.ActionResults actResult = mTools.ActionResult;
                 mTools.LogString($"playAndRecognizeASR - RecognizeStringFromListEx - actionResult : {actResult} - recognized : {recognized}");
@@ -873,21 +869,23 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             string recognized = "";
 
             mTools.LogString($"playAndRecognizeSTT - begin");
+
             if (AllocateEngineSTT(EngineNameSTT))
             {
                 mSecondAsyncPlay = true;
                 ivrIFlow.QuestionText = ivrIFlow.QuestionText + STTStopOnDigitPhrase;
                 mTools.LogString($"Execute - playAndRecognizeSTT TTS: {ivrIFlow.QuestionText}");
+                Stopwatch swLog = Stopwatch.StartNew();
                 PlayStringTTS(ivrIFlow.QuestionText, "", false);
+                swLog.Stop();
+                mTools.LogString($"Execute - [PlayStringTTS][TIMER][ms] elapsed={swLog.ElapsedMilliseconds}");
                 if (STTEnableBeep)
                     mHandler.playFile(fileNameBeep);
                 mHandler.playFileA(fileNameSilence, "@", false);
                 mInsideRecognize = true;
                 mTools.LogString($"Calling SpeechToTextEx2 - EngineName = {EngineNameSTT} - Language = {EngineLanguageSTT} - Confidence = {STTConfidenceThreshold} - MaxSilence = {STTMaxSilence}");
                 mTools.LogString($"                        - STTAdditionalParameters= {STTAdditionalParameters}");
-                //recognized = mHandler.lhASRTTSCtrl.SpeechToTextEx(EngineNameSTT, EngineLanguageSTT, STTConfidenceThreshold, STTMaxSilence, false, false, "", 0, true);
                 recognized = mHandler.lhASRTTSCtrl.SpeechToTextEx2(EngineNameSTT, EngineLanguageSTT, STTConfidenceThreshold, STTMaxSilence, false, false, "", 0, true, STTAdditionalParameters);
-
                 HelperClass.ActionResults actResult = mTools.ActionResult;
                 mTools.LogString($"playAndRecognizeSTT - SpeechToTextEx - actionResult : {actResult} - recognized : {recognized}");
                 mInsideRecognize = false;

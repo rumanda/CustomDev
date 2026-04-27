@@ -1,21 +1,24 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\",
+  "WorkspaceRootPath": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\wasabiivriflow\\wasabiivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|solutionrelative:wasabiivriflow\\wasabiivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|WasabiIvrIFlowWizard||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|c:\\dev\\svn\\customdev\\trunk\\mainline\\sources\\messenger services\\_generalpurpose\\wasabicrm\\wasabiivriflow2.0.0\\wizard 11.3\\wasabiivriflow\\wasabiivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|c:\\dev\\git\\customdev\\messenger services\\_general purpose\\wasabicrm\\wasabiivriflow2.0.0\\wizard 11.3\\wasabiivriflow\\wasabiivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|solutionrelative:wasabiivriflow\\wasabiivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\wasabiivriflow\\wasabiivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|solutionrelative:wasabiivriflow\\wasabiivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|WasabiIvrIFlowWizard||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{F6471FCF-8A2C-4216-AAC3-E1A795BD5930}|WasabiIvrIFlowWizard.csproj|c:\\dev\\git\\customdev\\messenger services\\_general purpose\\wasabicrm\\wasabiivriflow2.0.0\\wizard 11.3\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,7 +28,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,51 +36,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "AssemblyInfo.cs",
-              "ToolTip": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\AssemblyInfo.cs",
-              "RelativeToolTip": "AssemblyInfo.cs",
+              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\AssemblyInfo.cs*",
+              "RelativeToolTip": "AssemblyInfo.cs*",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T10:28:27.11Z"
+              "WhenOpened": "2026-04-22T10:28:27.11Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "WasabiIvrIFlowWizard",
-              "DocumentMoniker": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlowWizard.csproj",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlowWizard.csproj",
               "RelativeDocumentMoniker": "WasabiIvrIFlowWizard.csproj",
-              "ToolTip": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlowWizard.csproj",
-              "RelativeToolTip": "WasabiIvrIFlowWizard.csproj",
+              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlowWizard.csproj*",
+              "RelativeToolTip": "WasabiIvrIFlowWizard.csproj*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-04-22T10:22:52.659Z"
+              "WhenOpened": "2026-04-22T10:22:52.659Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "WasabiIvrIFlow.cs",
-              "DocumentMoniker": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlow\\WasabiIvrIFlow.cs",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlow\\WasabiIvrIFlow.cs",
               "RelativeDocumentMoniker": "WasabiIvrIFlow\\WasabiIvrIFlow.cs",
-              "ToolTip": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlow\\WasabiIvrIFlow.cs",
+              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlow\\WasabiIvrIFlow.cs",
               "RelativeToolTip": "WasabiIvrIFlow\\WasabiIvrIFlow.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-21T14:02:06.466Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "WasabiIvrIFlow.cs [Design]",
-              "DocumentMoniker": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlow\\WasabiIvrIFlow.cs",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlow\\WasabiIvrIFlow.cs",
               "RelativeDocumentMoniker": "WasabiIvrIFlow\\WasabiIvrIFlow.cs",
               "ToolTip": "C:\\Dev\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlow\\WasabiIvrIFlow.cs [Design]",
-              "RelativeToolTip": "WasabiIvrIFlow\\WasabiIvrIFlow.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Svn\\CustomDev\\trunk\\MainLine\\Sources\\Messenger Services\\_GeneralPurpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Wizard 11.3\\WasabiIvrIFlow\\WasabiIvrIFlow.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T14:02:03.853Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-04-21T14:02:03.853Z"
             }
           ]
         }

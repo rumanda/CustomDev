@@ -38,3 +38,13 @@ C:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\W
 C:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\WasabiIvrIFlowWizard.csproj.CoreCompileInputs.cache
 C:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\WasabiIv.ED2DA411.Up2Date
 C:\Dev\Svn\CustomDev\trunk\MainLine\Sources\Messenger Services\_GeneralPurpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\WasabiIvrIFlowWizard.dll
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\bin\WasabiIvrIFlowWizard.dll
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\bin\ApplicationManager.dll
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\bin\CommonDialogControls.dll
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\bin\ManagedDialogHost.dll
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\WasabiIvrIFlowWizard.csproj.AssemblyReference.cache
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\Ifm.Phones.Blocks.Customizations.GeneralPurpose.WasabiIvrIFlow.resources
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\WasabiIvrIFlowWizard.csproj.GenerateResource.cache
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\WasabiIvrIFlowWizard.csproj.CoreCompileInputs.cache
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\WasabiIv.ED2DA411.Up2Date
+C:\Dev\Git\CustomDev\Messenger Services\_General Purpose\WasabiCRM\WasabiIvrIFlow2.0.0\Wizard 11.3\obj\Release\WasabiIvrIFlowWizard.dll

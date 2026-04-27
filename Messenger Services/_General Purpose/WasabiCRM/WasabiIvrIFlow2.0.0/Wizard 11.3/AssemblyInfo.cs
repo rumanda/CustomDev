@@ -17,9 +17,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("WasabiIvrIFlowWizard")]
 [assembly: AssemblyProduct("WasabiIvrIFlowWizard")]
 
-[assembly: AssemblyVersion("11.3.3.0")]
+[assembly: AssemblyVersion("11.3.3.1")]
 
-[assembly: AssemblyFileVersion("11.3.3.0")]
+[assembly: AssemblyFileVersion("11.3.3.1")]
 [assembly: AssemblyInformationalVersion(AssemblyInfo.ProductVersion)]
 
 #region Build Configuration
