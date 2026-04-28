@@ -14,6 +14,7 @@
 
 using Ifm.Components.Messenger.Blocks.Interfaces;
 using Ifm.Components.Messenger.Blocks.Utilities;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -45,16 +46,12 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         private const string prmCHATtimeout = "CHATtimeout";
 
         private const string prmMessagesPath = "MessagesPath";       // Folder contenente i messaggi da suonare (WaitMessage.wav e WaitMusic.wav)
-        private const string prmTPLastAnswer = "TPLastAnswer";       // Nome transfer property in cui salvare l'ultima risposta data
         private const string prmUseASRForInput = "UseASRForInput";   // configurazione che indica se usare ASR (se no usa DTMF)
-        //private const string prmNextService = "NextService";                        // Nome servizio successivo 
         private const string prmNextServiceTerminated = "NextServiceTerminated";          // Nome servizio successivo su Terminated
-        //private const string prmNextServiceNoSelection = "NextServiceNoSelection"; // Nome servizio successivo su nessuna scelta
         private const string prmNextServiceTransferToOperator = "NextServiceOperator";
         private const string prmNextServiceError = "NextServiceError";             // Nome servizio successivo su Errore
         private const string prmEngineNameTTS = "EngineNameTTS";           // Engine Name TTS
         private const string prmEngineNameASR = "EngineNameASR";           // Engine Name TTS
-        //private const string prmASRBeepEnable = "ASRBeepEnable";                    // Indica se abilitare il beep prima di ASR
         private const string prmASRConfidenceThreshold = "ASRConfidenceThreshold";  // Soglia minima confidenza riconoscimento ASR
         private const string prmASRMaxSilence = "ASRMaxSilence";                    // Tempo massimo di riconoscimento
         private const string prmASRLookAheadTime = "ASRLookAheadTime";              // Tempo LookAhead (seconds)
@@ -126,10 +123,10 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
 
         private string messagePath = "";
         string fileNameSilence = ""; // file to play silence during ASR with full path
+        string fileNameWaitMusic = ""; // file to play as wait music during Wasabi call
         string fileNameBeep = "";
         IvrIFlow ivrIFlow;
         private string answerDone = "";
-        private string TPLastAnswer = "";
         //private string nextService = "";
         private string nextServiceTerminated = "";
         //private string nextServiceNoSelection = "";
@@ -208,7 +205,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             mInteractionId = mTools.GetCallDataValue("InteractionId");
 
             mTools.LogString("Initialize - Creating FlowConversationManager object");
-            flowConversationManager = new FlowConversationManager(mWasabiUrl, mWasabiApiId, mWasabiApiSecret, mWasabiTimeout, mTools.LogString);
+            flowConversationManager = new FlowConversationManager(mWasabiUrl, mWasabiApiId, mWasabiApiSecret, mWasabiTimeout, mTools);
             mTools.LogString("Initialize - Created FlowConversationManager object");
 
             ivrIFlow.ServiceType = (mTools.GetParamValue(prmTelefonico) == "1") ? ServiceType.TELEFONICO : ivrIFlow.ServiceType = ServiceType.CHAT;
@@ -217,7 +214,6 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             {
                 mTools.LogString($"Read CHAT Parameters --------");
                 CHATtimeout = Convert.ToInt32(mTools.GetParamValue(prmCHATtimeout));
-                CHATmessage = ivrIFlow.CreateChatMessage();
             }
             else  // blocchetto Telefonico
             {
@@ -309,13 +305,11 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                 TTS_DTMF_Numeric10 = mTools.GetParamValue(prmTTS_DTMF_Numeric10);
 
                 fileNameSilence = Path.Combine(messagePath, "Silence.wav");
+                fileNameWaitMusic = Path.Combine(messagePath, "WaitMusic.wav");
                 fileNameBeep = Path.Combine(messagePath, "Beep.wav");
             }
 
-            TPLastAnswer = mTools.GetParamValue(prmTPLastAnswer);
-            //nextService = mTools.GetParamValue(prmNextService);
             nextServiceTerminated = mTools.GetParamValue(prmNextServiceTerminated);
-            //nextServiceNoSelection = mTools.GetParamValue(prmNextServiceNoSelection);            
             nextServiceError = mTools.GetParamValue(prmNextServiceError);
             nextServiceTransferToOperator = mTools.GetParamValue(prmNextServiceTransferToOperator);
             mTools.LogString("Initialize - End");
@@ -327,7 +321,6 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             {
                 mTools.LogString("Execute - Begin");
                 mTools.SetTransferPropertyValue("InteractionClosed", "N");
-                mTools.SetTransferPropertyValue(TPLastAnswer, "");
 
                 string currentState = QueryIFlowState;
                 string strProssimoServizio = "";
@@ -348,7 +341,10 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                         // -----------------------
                         case (QueryIFlowState):
                             mTools.LogString("Execute - ******* [State: QueryIFlow] ******* ");
+                            mHandler.playFileA(fileNameWaitMusic);
                             bool flowControl = QueryIFlow();
+                            mHandler.stopVoice();
+
                             if (!flowControl)
                             {
                                 mTools.LogString("Execute - ERROR in QueryIFlow");
@@ -376,6 +372,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                                 if (ivrIFlow.ServiceType == ServiceType.CHAT) // blocchetto Chat
                                 {
                                     mTools.LogString("Execute - Terminated with Error - writeOnlyCHAT()");
+                                    CHATmessage = ivrIFlow.CreateChatMessage();
                                     writeOnlyCHAT();
                                 }
                                 else // blocchetto Telefonico
@@ -406,6 +403,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                                     if (ivrIFlow.ServiceType == ServiceType.CHAT) // blocchetto Chat
                                     {
                                         mTools.LogString("Execute - Transfer to Operator CurrentStepType");
+                                        CHATmessage = ivrIFlow.CreateChatMessage();
                                         writeOnlyCHAT();
                                     }
                                     else // blocchetto Telefonico
@@ -433,6 +431,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                                 if (ivrIFlow.ServiceType == ServiceType.CHAT) // blocchetto Chat
                                 {
                                     mTools.LogString("Execute - Transfer to Operator CurrentStepType");
+                                    CHATmessage = ivrIFlow.CreateChatMessage();
                                     writeOnlyCHAT();
                                 }
                                 else // blocchetto Telefonico
@@ -455,6 +454,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                             if (ivrIFlow.ServiceType == ServiceType.CHAT) // blocchetto Chat
                             {
                                 mTools.LogString("Execute - input=Chat");
+                                CHATmessage = ivrIFlow.CreateChatMessage();
                                 answerDone = WriteAndReadCHAT();
                             }
                             else // blocchetto Telefonico
@@ -485,20 +485,14 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                             mTools.LogString($"Execute - answerDone : {answerDone}");
                             if (answerDone.Length > 0) // ---@@@ check degli output
                             {
-                                mTools.SetTransferPropertyValue(TPLastAnswer, answerDone);
                                 mTools.LogString($"Execute - answerDone: {answerDone}");
-                                //strProssimoServizio = nextService;
-                                //currentState = TerminateState;
                                 currentState = QueryIFlowState;
                             }
                             else
                             {
                                 answerDone = "-";
-                                mTools.SetTransferPropertyValue(TPLastAnswer, answerDone);
                                 mTools.LogString($"Execute - answerDone empty");
                                 currentState = QueryIFlowState;
-                                //strProssimoServizio = nextServiceNoSelection;
-                                //currentState = TerminateState;
                             }
                             break;
 
@@ -510,13 +504,6 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                             mTools.LogString("Execute - Posting next service "  + nextServiceTerminated);
                             mHandler.postNextService(strProssimoServizio);
                             return;
-                            //if (IvrIFlow.ErrorReadingAnswers)
-                            //{
-                            //    mTools.LogString("Execute - Error Reading Answers");
-                            //    mTools.LogString($"Execute - posting next service {nextServiceError}");
-                            //    mHandler.postNextService(nextServiceError);
-                            //    return;
-                            //}
                     }
                 }
                 mTools.LogString("Execute - End");
@@ -658,6 +645,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             if (ivrIFlow.ServiceType == ServiceType.CHAT) // blocchetto Chat
             {
                 mTools.LogString("OutputMessage - chat message");
+                CHATmessage = ivrIFlow.CreateChatMessage();
                 writeOnlyCHAT();
             }
             else // blocchetto Telefonico
@@ -967,7 +955,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                 mTools.LogString("AllocateEngineTTS - EngName = " + engineNameTTS + " Language = " + mEngLang);
                 if (mHandler.boardChType == chTypePhoneSwitch_VK || mHandler.boardChType == chTypePhoneSwitch_MS)
                 {
-                    mTools.LogString("AllocateEngineTTS - boardChType = chTypePhoneSwitch_VK or boardChType = chTypePhoneSwitch_MS");
+                    mTools.LogString($"AllocateEngineTTS - boardChType = {mHandler.boardChType}");
                     if (mHandler.lhASRTTSCtrl != null)
                     {
                         string[] _params = engineNameTTS.Split('|');

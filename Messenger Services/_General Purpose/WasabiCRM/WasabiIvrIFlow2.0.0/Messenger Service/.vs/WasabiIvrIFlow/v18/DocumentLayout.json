@@ -3,20 +3,27 @@
   "WorkspaceRootPath": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\cservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|solutionrelative:cservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\flowconversationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|solutionrelative:flowconversationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|solutionrelative:iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\cservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|solutionrelative:cservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\ivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|c:\\dev\\git\\customdev\\messenger services\\_general purpose\\wasabicrm\\wasabiivriflow2.0.0\\messenger service\\ivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|solutionrelative:ivriflow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|WasabiIvrIFlow||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\helperclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|solutionrelative:helperclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|solutionrelative:iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4C282346-D073-4E22-8F5B-2BCA23BC4AE8}|WasabiIvrIFlow.csproj|C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -30,11 +37,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WasabiIvrIFlow",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\WasabiIvrIFlow.csproj",
+              "RelativeDocumentMoniker": "WasabiIvrIFlow.csproj",
+              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\WasabiIvrIFlow.csproj*",
+              "RelativeToolTip": "WasabiIvrIFlow.csproj*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-04-28T08:13:16.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HelperClass.cs",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\HelperClass.cs",
+              "RelativeDocumentMoniker": "HelperClass.cs",
+              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\HelperClass.cs",
+              "RelativeToolTip": "HelperClass.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T07:50:28.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CService.cs",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\CService.cs",
+              "RelativeDocumentMoniker": "CService.cs",
+              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\CService.cs",
+              "RelativeToolTip": "CService.cs",
+              "ViewState": "AgIAAIgBAAAAAAAAAAAmwJEBAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T10:38:37.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FlowConversationManager.cs",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\FlowConversationManager.cs",
+              "RelativeDocumentMoniker": "FlowConversationManager.cs",
+              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\FlowConversationManager.cs",
+              "RelativeToolTip": "FlowConversationManager.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAuwHAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T10:38:37.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IvrIFlow.cs",
+              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\IvrIFlow.cs",
+              "RelativeDocumentMoniker": "IvrIFlow.cs",
+              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\IvrIFlow.cs",
+              "RelativeToolTip": "IvrIFlow.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAwwKUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T10:38:37.976Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -42,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "IService.cs",
               "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\IService.cs",
               "RelativeDocumentMoniker": "IService.cs",
@@ -54,33 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FlowConversationManager.cs",
-              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\FlowConversationManager.cs",
-              "RelativeDocumentMoniker": "FlowConversationManager.cs",
-              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\FlowConversationManager.cs",
-              "RelativeToolTip": "FlowConversationManager.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAwwGAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T10:38:37.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CService.cs",
-              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\CService.cs",
-              "RelativeDocumentMoniker": "CService.cs",
-              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\CService.cs",
-              "RelativeToolTip": "CService.cs",
-              "ViewState": "AgIAAB0BAAAAAAAAAAAvwCkBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T10:38:37.974Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "packages.config",
               "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\packages.config",
               "RelativeDocumentMoniker": "packages.config",
@@ -89,18 +128,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2026-04-22T12:58:53.635Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IvrIFlow.cs",
-              "DocumentMoniker": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\IvrIFlow.cs",
-              "RelativeDocumentMoniker": "IvrIFlow.cs",
-              "ToolTip": "C:\\Dev\\Git\\CustomDev\\Messenger Services\\_General Purpose\\WasabiCRM\\WasabiIvrIFlow2.0.0\\Messenger Service\\IvrIFlow.cs",
-              "RelativeToolTip": "IvrIFlow.cs",
-              "ViewState": "AgIAAOUAAAAAAAAAAAAwwAsBAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T10:38:37.976Z"
             }
           ]
         }
