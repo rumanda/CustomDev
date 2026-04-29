@@ -50,6 +50,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         private const string prmNextServiceTerminated = "NextServiceTerminated";          // Nome servizio successivo su Terminated
         private const string prmNextServiceTransferToOperator = "NextServiceOperator";
         private const string prmNextServiceError = "NextServiceError";             // Nome servizio successivo su Errore
+        private const string prmGoogleEngineCredential = "GoogleEngineCredential";             // Credenziali per utilizzo Google Engine 
         private const string prmEngineNameTTS = "EngineNameTTS";           // Engine Name TTS
         private const string prmEngineNameASR = "EngineNameASR";           // Engine Name TTS
         private const string prmASRConfidenceThreshold = "ASRConfidenceThreshold";  // Soglia minima confidenza riconoscimento ASR
@@ -86,7 +87,6 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         #endregion Constants
         //  *** Constant for ChannelType
         private const string chTypePhoneSwitch_VK = "VK";
-        private const string chTypePhoneSwitch_MS = "MS";
 
         private const string QueryIFlowState = "QueryIFlowState";
         private const string VoiceInteractionState = "VoiceInteractionState";
@@ -132,6 +132,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         //private string nextServiceNoSelection = "";
         private string nextServiceTransferToOperator = "";
         private string nextServiceError = "";
+        private string googleEngineCredential = "";
         private string engineNameTTS = "";
         private string engineNameASR = "";
         private string mEngLang = "";
@@ -220,6 +221,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                 mTools.LogString($"Read PHONES Parameters --------");
                 messagePath = mHandler.baseMsgPath + mTools.GetParamValue(prmMessagesPath);
                 useASRForInput = mTools.GetParamValue(prmUseASRForInput);
+                googleEngineCredential = mTools.GetParamValue(prmGoogleEngineCredential);
                 engineNameTTS = mTools.GetParamValue(prmEngineNameTTS).ToUpper();
 
                 mTools.LogString($"useASRForInput = {useASRForInput}");
@@ -858,7 +860,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
 
             mTools.LogString($"playAndRecognizeSTT - begin");
 
-            if (AllocateEngineSTT(EngineNameSTT))
+            if (AllocateEngineSTT())
             {
                 mSecondAsyncPlay = true;
                 ivrIFlow.QuestionText = ivrIFlow.QuestionText + STTStopOnDigitPhrase;
@@ -952,8 +954,8 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             string engineName = "";
             try
             {
-                mTools.LogString("AllocateEngineTTS - EngName = " + engineNameTTS + " Language = " + mEngLang);
-                if (mHandler.boardChType == chTypePhoneSwitch_VK || mHandler.boardChType == chTypePhoneSwitch_MS)
+                mTools.LogString($"AllocateEngineTTS - EngName = {engineNameTTS}, Language = {mEngLang}, Credential = {googleEngineCredential}");
+                if (mHandler.boardChType == chTypePhoneSwitch_VK)
                 {
                     mTools.LogString($"AllocateEngineTTS - boardChType = {mHandler.boardChType}");
                     if (mHandler.lhASRTTSCtrl != null)
@@ -976,7 +978,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                                 return false;
                         }
                         mTools.LogString("AllocateEngineTTS - EngName=" + engineName + " Language=" + mEngLang);
-                        if (mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.TTS, mEngLang, engineName, Convert.ToInt16(mEngRate)) == true)
+                        if (mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.TTS, mEngLang, engineName, Convert.ToInt16(mEngRate), googleEngineCredential))
                         {
                             mTools.LogString("AllocateEngineTTS - AllocateEngine successfully");
                             return true;
@@ -1069,10 +1071,10 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
 
         }
 
-        private bool AllocateEngineSTT(string engineName)
+        private bool AllocateEngineSTT()
         {
             mTools.LogString("AllocateEngineSTT - begin");
-            if (mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.STT, "None", engineName, 0))
+            if (mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.STT, "None", EngineNameSTT, 0, googleEngineCredential))
             {
                 mTools.LogString("AllocateEngineASR - STT Engine allocated");
                 return true;
@@ -1093,7 +1095,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                 if (AllocateEngineTTS() == true)
                 {
                     mTools.LogString("PlayStringTTS - AllocateEngineTTS() done");
-                    if (mHandler.boardChType == chTypePhoneSwitch_VK || mHandler.boardChType == chTypePhoneSwitch_MS)
+                    if (mHandler.boardChType == chTypePhoneSwitch_VK)
                     {
                         if (async)
                         {

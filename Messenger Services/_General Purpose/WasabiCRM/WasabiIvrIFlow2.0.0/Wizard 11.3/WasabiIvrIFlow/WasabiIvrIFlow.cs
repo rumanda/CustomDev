@@ -47,6 +47,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
     [PropertyAttribute("FlowId", "", false)]
     [PropertyAttribute("MessagesPath", "", false)]
     [PropertyAttribute("EngineNameTTS", "", false)]
+    [PropertyAttribute("GoogleEngineCredential", "", false)]
     [PropertyAttribute("UseASRForInput", "1", false)]
     [PropertyAttribute("EngineNameASR", "", false)]
     [PropertyAttribute("ASRConfidenceThreshold", "70", false)]
@@ -149,6 +150,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
         private SetParamValue WS_SID;
         private SetParamValue WS_URL;
         private SetParamValue FlowId;
+        private SelectEngineCredentials selectGoogleEngineCredential;
         private GenericListViewColumnHeader clmnParamValue;
 
         public WasabiIvrIFlow()
@@ -266,6 +268,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.tabPageCustomParameters = new System.Windows.Forms.TabPage();
             this.lstViewCustomParameters = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.GenericListView();
             this.lblInstruction_6 = new System.Windows.Forms.Label();
+            this.selectGoogleEngineCredential = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineCredentials();
             this.tabControl.SuspendLayout();
             this.tabPageTipoChiamata.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -485,13 +488,14 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             // 
             // tabPageQuestionTTS
             // 
+            this.tabPageQuestionTTS.Controls.Add(this.selectGoogleEngineCredential);
             this.tabPageQuestionTTS.Controls.Add(this.lblInstruction3);
             this.tabPageQuestionTTS.Controls.Add(this.EngineNameTTS);
             this.tabPageQuestionTTS.Location = new System.Drawing.Point(4, 22);
             this.tabPageQuestionTTS.Name = "tabPageQuestionTTS";
             this.tabPageQuestionTTS.Size = new System.Drawing.Size(424, 405);
             this.tabPageQuestionTTS.TabIndex = 0;
-            this.tabPageQuestionTTS.Text = "Domanda TTS:";
+            this.tabPageQuestionTTS.Text = "STT/TTS";
             // 
             // lblInstruction3
             // 
@@ -513,7 +517,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.EngineNameTTS.Location = new System.Drawing.Point(8, 64);
             this.EngineNameTTS.Name = "EngineNameTTS";
             this.EngineNameTTS.Padding = new System.Windows.Forms.Padding(2);
-            this.EngineNameTTS.Size = new System.Drawing.Size(400, 42);
+            this.EngineNameTTS.Size = new System.Drawing.Size(400, 41);
             this.EngineNameTTS.TabIndex = 8;
             this.EngineNameTTS.Tag = "EngineNameTTS";
             this.EngineNameTTS.Value = "";
@@ -1116,6 +1120,23 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.lblInstruction_6.Size = new System.Drawing.Size(408, 37);
             this.lblInstruction_6.TabIndex = 3;
             this.lblInstruction_6.Text = "Indicare i parametri aggiuntivi da utilizzare per il riconoscimento.";
+            // 
+            // selectGoogleEngineCredential
+            // 
+            this.selectGoogleEngineCredential.Application = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.MessengerDialogControl.ApplicationNames.PhonesEnterprise;
+            this.selectGoogleEngineCredential.BackColor = System.Drawing.SystemColors.Control;
+            this.selectGoogleEngineCredential.Caption = "Credenziali STT/TTS ";
+            this.selectGoogleEngineCredential.CurrentApplicationName = null;
+            this.selectGoogleEngineCredential.Enable = true;
+            this.selectGoogleEngineCredential.EngineType = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineCredentials.EngineTypes.TTS;
+            this.selectGoogleEngineCredential.Location = new System.Drawing.Point(12, 134);
+            this.selectGoogleEngineCredential.Name = "selectGoogleEngineCredential";
+            this.selectGoogleEngineCredential.Padding = new System.Windows.Forms.Padding(2);
+            this.selectGoogleEngineCredential.Size = new System.Drawing.Size(396, 42);
+            this.selectGoogleEngineCredential.TabIndex = 10;
+            this.selectGoogleEngineCredential.Tag = "GoogleEngineCredential";
+            this.selectGoogleEngineCredential.UserName = null;
+            this.selectGoogleEngineCredential.Value = "";
             // 
             // WasabiIvrIFlow
             // 

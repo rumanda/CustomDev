@@ -103,17 +103,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ApplicationManager, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\_Libraries\11.3.0\ApplicationManager.dll</HintPath>
+    <Reference Include="ApplicationManager">
+      <HintPath>..\..\..\..\_Libraries\11.3.7\ApplicationManager.dll</HintPath>
     </Reference>
-    <Reference Include="CommonDialogControls, Version=11.3.1.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="CommonDialogControls, Version=11.3.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\_Libraries\11.3.0\CommonDialogControls.dll</HintPath>
+      <HintPath>..\..\..\..\_Libraries\11.3.7\CommonDialogControls.dll</HintPath>
     </Reference>
-    <Reference Include="ManagedDialogHost, Version=11.2.0.0, Culture=neutral, PublicKeyToken=b531e6d6a510935d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\_Libraries\11.3.0\ManagedDialogHost.dll</HintPath>
+    <Reference Include="ManagedDialogHost">
+      <HintPath>..\..\..\..\_Libraries\11.3.7\ManagedDialogHost.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -124,6 +122,8 @@
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
     </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms">
       <Name>System.Windows.Forms</Name>
     </Reference>
