@@ -50,7 +50,8 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         private const string prmNextServiceTerminated = "NextServiceTerminated";          // Nome servizio successivo su Terminated
         private const string prmNextServiceTransferToOperator = "NextServiceOperator";
         private const string prmNextServiceError = "NextServiceError";             // Nome servizio successivo su Errore
-        private const string prmGoogleEngineCredential = "GoogleEngineCredential";             // Credenziali per utilizzo Google Engine 
+        private const string prmGoogleEngineCredentialsTTS = "GoogleEngineCredentialsTTS";             // Credenziali per utilizzo Google Engine TTS
+        private const string prmGoogleEngineCredentialsSTT = "GoogleEngineCredentialsSTT";             // Credenziali per utilizzo Google Engine STT
         private const string prmEngineNameTTS = "EngineNameTTS";           // Engine Name TTS
         private const string prmEngineNameASR = "EngineNameASR";           // Engine Name TTS
         private const string prmASRConfidenceThreshold = "ASRConfidenceThreshold";  // Soglia minima confidenza riconoscimento ASR
@@ -132,7 +133,8 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
         //private string nextServiceNoSelection = "";
         private string nextServiceTransferToOperator = "";
         private string nextServiceError = "";
-        private string googleEngineCredential = "";
+        private string googleEngineCredentialsTTS = "";
+        private string googleEngineCredentialsSTT = "";
         private string engineNameTTS = "";
         private string engineNameASR = "";
         private string mEngLang = "";
@@ -221,7 +223,8 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                 mTools.LogString($"Read PHONES Parameters --------");
                 messagePath = mHandler.baseMsgPath + mTools.GetParamValue(prmMessagesPath);
                 useASRForInput = mTools.GetParamValue(prmUseASRForInput);
-                googleEngineCredential = mTools.GetParamValue(prmGoogleEngineCredential);
+                googleEngineCredentialsTTS = mTools.GetParamValue(prmGoogleEngineCredentialsTTS);
+                googleEngineCredentialsSTT = mTools.GetParamValue(prmGoogleEngineCredentialsSTT);
                 engineNameTTS = mTools.GetParamValue(prmEngineNameTTS).ToUpper();
 
                 mTools.LogString($"useASRForInput = {useASRForInput}");
@@ -954,7 +957,7 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
             string engineName = "";
             try
             {
-                mTools.LogString($"AllocateEngineTTS - EngName = {engineNameTTS}, Language = {mEngLang}, Credential = {googleEngineCredential}");
+                mTools.LogString($"AllocateEngineTTS - EngName = {engineNameTTS}, Language = {mEngLang}, Credential = {googleEngineCredentialsTTS}");
                 if (mHandler.boardChType == chTypePhoneSwitch_VK)
                 {
                     mTools.LogString($"AllocateEngineTTS - boardChType = {mHandler.boardChType}");
@@ -978,7 +981,21 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
                                 return false;
                         }
                         mTools.LogString("AllocateEngineTTS - EngName=" + engineName + " Language=" + mEngLang);
-                        if (mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.TTS, mEngLang, engineName, Convert.ToInt16(mEngRate), googleEngineCredential))
+                        short rate = Convert.ToInt16(mEngRate);
+                        bool allocateOk;
+
+                        if (!string.IsNullOrWhiteSpace(googleEngineCredentialsTTS))
+                        {
+                            mTools.LogString("AllocateEngineTTS - using credentials overload");
+                            allocateOk = mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.TTS, mEngLang, engineName, rate, googleEngineCredentialsTTS);
+                        }
+                        else
+                        {
+                            mTools.LogString("AllocateEngineTTS - using standard overload (no credentials)");
+                            allocateOk = mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.TTS, mEngLang, engineName,rate);
+                        }
+
+                        if (allocateOk)
                         {
                             mTools.LogString("AllocateEngineTTS - AllocateEngine successfully");
                             return true;
@@ -1073,15 +1090,29 @@ namespace Ifm.Components.Messenger.Blocks.CustomMessengerServices
 
         private bool AllocateEngineSTT()
         {
-            mTools.LogString("AllocateEngineSTT - begin");
-            if (mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.STT, "None", EngineNameSTT, 0, googleEngineCredential))
+            mTools.LogString($"AllocateEngineSTT - Credential = {googleEngineCredentialsTTS}");
+            short rate = Convert.ToInt16(mEngRate);
+            bool allocateOk;
+
+            if (!string.IsNullOrWhiteSpace(googleEngineCredentialsTTS))
             {
-                mTools.LogString("AllocateEngineASR - STT Engine allocated");
+                mTools.LogString("AllocateEngineSTT - using credentials overload");
+                allocateOk = mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.STT, "None", EngineNameSTT, 0, googleEngineCredentialsSTT);
+            }
+            else
+            {
+                mTools.LogString("AllocateEngineSTT - using standard overload (no credentials)");
+                allocateOk = mHandler.lhASRTTSCtrl.AllocateEngine(EngineType.STT, "None", EngineNameSTT, 0);
+            }
+
+            if (allocateOk)
+            {
+                mTools.LogString("AllocateEngineSTT - AllocateEngine successfully");
                 return true;
             }
             else
             {
-                mTools.LogString("AllocateEngineASR - STT Engine not allocated");
+                mTools.LogString("AllocateEngineSTT - AllocateEngine failed - error");
                 return false;
             }
         }

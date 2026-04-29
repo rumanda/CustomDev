@@ -47,7 +47,8 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
     [PropertyAttribute("FlowId", "", false)]
     [PropertyAttribute("MessagesPath", "", false)]
     [PropertyAttribute("EngineNameTTS", "", false)]
-    [PropertyAttribute("GoogleEngineCredential", "", false)]
+    [PropertyAttribute("GoogleEngineCredentialsTTS", "", false)]
+    [PropertyAttribute("GoogleEngineCredentialsSTT", "", false)]
     [PropertyAttribute("UseASRForInput", "1", false)]
     [PropertyAttribute("EngineNameASR", "", false)]
     [PropertyAttribute("ASRConfidenceThreshold", "70", false)]
@@ -150,7 +151,9 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
         private SetParamValue WS_SID;
         private SetParamValue WS_URL;
         private SetParamValue FlowId;
-        private SelectEngineCredentials selectGoogleEngineCredential;
+        private SelectEngineCredentials selectGoogleEngineCredentialsTTS;
+        private Label label3;
+        private SelectEngineCredentials selectEngineCredentialsSTT;
         private GenericListViewColumnHeader clmnParamValue;
 
         public WasabiIvrIFlow()
@@ -228,6 +231,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.WS_SID = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SetParamValue();
             this.WS_URL = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SetParamValue();
             this.tabPageQuestionTTS = new System.Windows.Forms.TabPage();
+            this.selectGoogleEngineCredentialsTTS = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineCredentials();
             this.lblInstruction3 = new System.Windows.Forms.Label();
             this.EngineNameTTS = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineName();
             this.tabPageQuestionTTSPhrases = new System.Windows.Forms.TabPage();
@@ -268,7 +272,8 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.tabPageCustomParameters = new System.Windows.Forms.TabPage();
             this.lstViewCustomParameters = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.GenericListView();
             this.lblInstruction_6 = new System.Windows.Forms.Label();
-            this.selectGoogleEngineCredential = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineCredentials();
+            this.selectEngineCredentialsSTT = new Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineCredentials();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPageTipoChiamata.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -327,6 +332,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.setTimeoutChat.TabIndex = 20;
             this.setTimeoutChat.Tag = "CHATtimeout";
             this.setTimeoutChat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.setTimeoutChat.UserName = null;
             this.setTimeoutChat.Value = "";
             this.setTimeoutChat.VisibleLabel = true;
             // 
@@ -407,6 +413,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.FlowId.TabIndex = 8;
             this.FlowId.Tag = "FlowId";
             this.FlowId.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.FlowId.UserName = null;
             this.FlowId.Value = "";
             this.FlowId.VisibleLabel = true;
             // 
@@ -426,6 +433,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.WS_TIMEOUT.TabIndex = 7;
             this.WS_TIMEOUT.Tag = "WS_TIMEOUT";
             this.WS_TIMEOUT.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.WS_TIMEOUT.UserName = null;
             this.WS_TIMEOUT.Value = "";
             this.WS_TIMEOUT.VisibleLabel = true;
             // 
@@ -445,6 +453,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.WS_API_SECRET.TabIndex = 6;
             this.WS_API_SECRET.Tag = "WS_API_SECRET";
             this.WS_API_SECRET.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.WS_API_SECRET.UserName = null;
             this.WS_API_SECRET.Value = "";
             this.WS_API_SECRET.VisibleLabel = true;
             // 
@@ -464,6 +473,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.WS_SID.TabIndex = 5;
             this.WS_SID.Tag = "WS_API_ID";
             this.WS_SID.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.WS_SID.UserName = null;
             this.WS_SID.Value = "";
             this.WS_SID.VisibleLabel = true;
             // 
@@ -483,12 +493,15 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.WS_URL.TabIndex = 4;
             this.WS_URL.Tag = "WS_URL";
             this.WS_URL.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.WS_URL.UserName = null;
             this.WS_URL.Value = "";
             this.WS_URL.VisibleLabel = true;
             // 
             // tabPageQuestionTTS
             // 
-            this.tabPageQuestionTTS.Controls.Add(this.selectGoogleEngineCredential);
+            this.tabPageQuestionTTS.Controls.Add(this.label3);
+            this.tabPageQuestionTTS.Controls.Add(this.selectEngineCredentialsSTT);
+            this.tabPageQuestionTTS.Controls.Add(this.selectGoogleEngineCredentialsTTS);
             this.tabPageQuestionTTS.Controls.Add(this.lblInstruction3);
             this.tabPageQuestionTTS.Controls.Add(this.EngineNameTTS);
             this.tabPageQuestionTTS.Location = new System.Drawing.Point(4, 22);
@@ -497,14 +510,31 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.tabPageQuestionTTS.TabIndex = 0;
             this.tabPageQuestionTTS.Text = "STT/TTS";
             // 
+            // selectGoogleEngineCredentialsTTS
+            // 
+            this.selectGoogleEngineCredentialsTTS.Application = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.MessengerDialogControl.ApplicationNames.PhonesEnterprise;
+            this.selectGoogleEngineCredentialsTTS.BackColor = System.Drawing.SystemColors.Control;
+            this.selectGoogleEngineCredentialsTTS.Caption = "Credenziali TTS ";
+            this.selectGoogleEngineCredentialsTTS.CurrentApplicationName = null;
+            this.selectGoogleEngineCredentialsTTS.Enable = true;
+            this.selectGoogleEngineCredentialsTTS.EngineType = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineCredentials.EngineTypes.TTS;
+            this.selectGoogleEngineCredentialsTTS.Location = new System.Drawing.Point(8, 121);
+            this.selectGoogleEngineCredentialsTTS.Name = "selectGoogleEngineCredentialsTTS";
+            this.selectGoogleEngineCredentialsTTS.Padding = new System.Windows.Forms.Padding(2);
+            this.selectGoogleEngineCredentialsTTS.Size = new System.Drawing.Size(396, 42);
+            this.selectGoogleEngineCredentialsTTS.TabIndex = 10;
+            this.selectGoogleEngineCredentialsTTS.Tag = "GoogleEngineCredentialsTTS";
+            this.selectGoogleEngineCredentialsTTS.UserName = null;
+            this.selectGoogleEngineCredentialsTTS.Value = "";
+            // 
             // lblInstruction3
             // 
             this.lblInstruction3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblInstruction3.Location = new System.Drawing.Point(9, 21);
+            this.lblInstruction3.Location = new System.Drawing.Point(5, 27);
             this.lblInstruction3.Name = "lblInstruction3";
-            this.lblInstruction3.Size = new System.Drawing.Size(404, 40);
+            this.lblInstruction3.Size = new System.Drawing.Size(404, 16);
             this.lblInstruction3.TabIndex = 9;
-            this.lblInstruction3.Text = "Indicare i parametri per il TTS ";
+            this.lblInstruction3.Text = "Indicare i parametri per TTS ";
             // 
             // EngineNameTTS
             // 
@@ -520,6 +550,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.EngineNameTTS.Size = new System.Drawing.Size(400, 41);
             this.EngineNameTTS.TabIndex = 8;
             this.EngineNameTTS.Tag = "EngineNameTTS";
+            this.EngineNameTTS.UserName = null;
             this.EngineNameTTS.Value = "";
             // 
             // tabPageQuestionTTSPhrases
@@ -561,6 +592,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.TTS_ASR_NumericMenuAnd.TabIndex = 8;
             this.TTS_ASR_NumericMenuAnd.Tag = "TTS_ASR_NumericMenuAnd";
             this.TTS_ASR_NumericMenuAnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TTS_ASR_NumericMenuAnd.UserName = null;
             this.TTS_ASR_NumericMenuAnd.Value = " e ";
             this.TTS_ASR_NumericMenuAnd.VisibleLabel = true;
             // 
@@ -580,6 +612,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.TTS_ASR_NumericMenuBegin.TabIndex = 7;
             this.TTS_ASR_NumericMenuBegin.Tag = "TTS_ASR_NumericMenuBegin";
             this.TTS_ASR_NumericMenuBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TTS_ASR_NumericMenuBegin.UserName = null;
             this.TTS_ASR_NumericMenuBegin.Value = ", Dire un numero compreso tra ";
             this.TTS_ASR_NumericMenuBegin.VisibleLabel = true;
             // 
@@ -599,6 +632,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.TTS_ASR_MenuBegin.TabIndex = 6;
             this.TTS_ASR_MenuBegin.Tag = "TTS_ASR_MenuBegin";
             this.TTS_ASR_MenuBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TTS_ASR_MenuBegin.UserName = null;
             this.TTS_ASR_MenuBegin.Value = ", Scegliere tra: ";
             this.TTS_ASR_MenuBegin.VisibleLabel = true;
             // 
@@ -632,6 +666,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.TTS_DTMF_Numeric10.TabIndex = 10;
             this.TTS_DTMF_Numeric10.Tag = "TTS_DTMF_Numeric10";
             this.TTS_DTMF_Numeric10.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TTS_DTMF_Numeric10.UserName = null;
             this.TTS_DTMF_Numeric10.Value = ", premere # per selezione 10 ";
             this.TTS_DTMF_Numeric10.VisibleLabel = true;
             // 
@@ -651,6 +686,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.TTS_DTMF_NumericMenuAnd.TabIndex = 5;
             this.TTS_DTMF_NumericMenuAnd.Tag = "TTS_DTMF_NumericMenuAnd";
             this.TTS_DTMF_NumericMenuAnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TTS_DTMF_NumericMenuAnd.UserName = null;
             this.TTS_DTMF_NumericMenuAnd.Value = " e ";
             this.TTS_DTMF_NumericMenuAnd.VisibleLabel = true;
             // 
@@ -670,6 +706,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.TTS_DTMF_NumericMenuBegin.TabIndex = 4;
             this.TTS_DTMF_NumericMenuBegin.Tag = "TTS_DTMF_NumericMenuBegin";
             this.TTS_DTMF_NumericMenuBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TTS_DTMF_NumericMenuBegin.UserName = null;
             this.TTS_DTMF_NumericMenuBegin.Value = ", Digitare un numero compreso tra ";
             this.TTS_DTMF_NumericMenuBegin.VisibleLabel = true;
             // 
@@ -689,6 +726,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.TTS_DTMF_MenuFor.TabIndex = 3;
             this.TTS_DTMF_MenuFor.Tag = "TTS_DTMF_MenuFor";
             this.TTS_DTMF_MenuFor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TTS_DTMF_MenuFor.UserName = null;
             this.TTS_DTMF_MenuFor.Value = " per ";
             this.TTS_DTMF_MenuFor.VisibleLabel = true;
             // 
@@ -708,6 +746,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.TTS_DTMF_MenuBegin.TabIndex = 2;
             this.TTS_DTMF_MenuBegin.Tag = "TTS_DTMF_MenuBegin";
             this.TTS_DTMF_MenuBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TTS_DTMF_MenuBegin.UserName = null;
             this.TTS_DTMF_MenuBegin.Value = ", Digitare:";
             this.TTS_DTMF_MenuBegin.VisibleLabel = true;
             // 
@@ -740,6 +779,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.maxRetry.TabIndex = 18;
             this.maxRetry.Tag = "MaxRetryTel";
             this.maxRetry.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.maxRetry.UserName = null;
             this.maxRetry.Value = "3";
             this.maxRetry.VisibleLabel = true;
             // 
@@ -772,6 +812,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.MessagesPath.TabIndex = 16;
             this.MessagesPath.Tag = "MessagesPath";
             this.MessagesPath.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessagesPath.UserName = null;
             this.MessagesPath.Value = "";
             // 
             // ASRLookAheadTime
@@ -790,6 +831,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.ASRLookAheadTime.TabIndex = 11;
             this.ASRLookAheadTime.Tag = "ASRLookAheadTime";
             this.ASRLookAheadTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ASRLookAheadTime.UserName = null;
             this.ASRLookAheadTime.Value = "800";
             this.ASRLookAheadTime.VisibleLabel = true;
             // 
@@ -809,6 +851,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.ASRMaxSilence.TabIndex = 10;
             this.ASRMaxSilence.Tag = "ASRMaxSilence";
             this.ASRMaxSilence.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ASRMaxSilence.UserName = null;
             this.ASRMaxSilence.Value = "5";
             this.ASRMaxSilence.VisibleLabel = true;
             // 
@@ -828,6 +871,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.ASRConfidenceThreshold.TabIndex = 9;
             this.ASRConfidenceThreshold.Tag = "ASRConfidenceThreshold";
             this.ASRConfidenceThreshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ASRConfidenceThreshold.UserName = null;
             this.ASRConfidenceThreshold.Value = "70";
             this.ASRConfidenceThreshold.VisibleLabel = true;
             // 
@@ -845,6 +889,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.EngineNameASR.Size = new System.Drawing.Size(396, 41);
             this.EngineNameASR.TabIndex = 7;
             this.EngineNameASR.Tag = "EngineNameASR";
+            this.EngineNameASR.UserName = null;
             this.EngineNameASR.Value = "";
             // 
             // groupBoxDTMF
@@ -873,6 +918,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.DTMFWaitTime.TabIndex = 6;
             this.DTMFWaitTime.Tag = "DTMFWaitTime";
             this.DTMFWaitTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.DTMFWaitTime.UserName = null;
             this.DTMFWaitTime.Value = "5";
             this.DTMFWaitTime.VisibleLabel = true;
             // 
@@ -927,6 +973,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.STTStopOnDigitPhrase.TabIndex = 32;
             this.STTStopOnDigitPhrase.Tag = "STTStopOnDigitPhrase";
             this.STTStopOnDigitPhrase.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.STTStopOnDigitPhrase.UserName = null;
             this.STTStopOnDigitPhrase.Value = "Premi un pulsante per interrompere vocalizzazione";
             this.STTStopOnDigitPhrase.VisibleLabel = true;
             // 
@@ -959,6 +1006,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.STTMaxSilence.TabIndex = 30;
             this.STTMaxSilence.Tag = "STTMaxSilence";
             this.STTMaxSilence.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.STTMaxSilence.UserName = null;
             this.STTMaxSilence.Value = "20";
             this.STTMaxSilence.VisibleLabel = true;
             // 
@@ -978,6 +1026,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.STTConfidenceThreshold.TabIndex = 29;
             this.STTConfidenceThreshold.Tag = "STTConfidenceThreshold";
             this.STTConfidenceThreshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.STTConfidenceThreshold.UserName = null;
             this.STTConfidenceThreshold.Value = "70";
             this.STTConfidenceThreshold.VisibleLabel = true;
             // 
@@ -1075,6 +1124,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.txtLanguageCode.TabIndex = 19;
             this.txtLanguageCode.Tag = "EngineLanguageSTT";
             this.txtLanguageCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtLanguageCode.UserName = null;
             this.txtLanguageCode.Value = "it-IT";
             this.txtLanguageCode.VisibleLabel = false;
             // 
@@ -1110,6 +1160,7 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.lstViewCustomParameters.SortType = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.GenericListView.SortTypes.Automatic;
             this.lstViewCustomParameters.TabIndex = 4;
             this.lstViewCustomParameters.Tag = "AdditionalParameters";
+            this.lstViewCustomParameters.UserName = null;
             this.lstViewCustomParameters.Value = "";
             // 
             // lblInstruction_6
@@ -1121,22 +1172,31 @@ namespace Ifm.Phones.Blocks.Customizations.GeneralPurpose {
             this.lblInstruction_6.TabIndex = 3;
             this.lblInstruction_6.Text = "Indicare i parametri aggiuntivi da utilizzare per il riconoscimento.";
             // 
-            // selectGoogleEngineCredential
+            // selectEngineCredentialsSTT
             // 
-            this.selectGoogleEngineCredential.Application = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.MessengerDialogControl.ApplicationNames.PhonesEnterprise;
-            this.selectGoogleEngineCredential.BackColor = System.Drawing.SystemColors.Control;
-            this.selectGoogleEngineCredential.Caption = "Credenziali STT/TTS ";
-            this.selectGoogleEngineCredential.CurrentApplicationName = null;
-            this.selectGoogleEngineCredential.Enable = true;
-            this.selectGoogleEngineCredential.EngineType = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineCredentials.EngineTypes.TTS;
-            this.selectGoogleEngineCredential.Location = new System.Drawing.Point(12, 134);
-            this.selectGoogleEngineCredential.Name = "selectGoogleEngineCredential";
-            this.selectGoogleEngineCredential.Padding = new System.Windows.Forms.Padding(2);
-            this.selectGoogleEngineCredential.Size = new System.Drawing.Size(396, 42);
-            this.selectGoogleEngineCredential.TabIndex = 10;
-            this.selectGoogleEngineCredential.Tag = "GoogleEngineCredential";
-            this.selectGoogleEngineCredential.UserName = null;
-            this.selectGoogleEngineCredential.Value = "";
+            this.selectEngineCredentialsSTT.Application = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.MessengerDialogControl.ApplicationNames.PhonesEnterprise;
+            this.selectEngineCredentialsSTT.BackColor = System.Drawing.SystemColors.Control;
+            this.selectEngineCredentialsSTT.Caption = "Credenziali STT";
+            this.selectEngineCredentialsSTT.CurrentApplicationName = null;
+            this.selectEngineCredentialsSTT.Enable = true;
+            this.selectEngineCredentialsSTT.EngineType = Ifm.Phones.Blocks.BaseMessengerServices.Dialogs.SelectEngineCredentials.EngineTypes.STT;
+            this.selectEngineCredentialsSTT.Location = new System.Drawing.Point(8, 230);
+            this.selectEngineCredentialsSTT.Name = "selectEngineCredentialsSTT";
+            this.selectEngineCredentialsSTT.Padding = new System.Windows.Forms.Padding(2);
+            this.selectEngineCredentialsSTT.Size = new System.Drawing.Size(396, 42);
+            this.selectEngineCredentialsSTT.TabIndex = 11;
+            this.selectEngineCredentialsSTT.Tag = "GoogleEngineCredentialsSTT";
+            this.selectEngineCredentialsSTT.UserName = null;
+            this.selectEngineCredentialsSTT.Value = "";
+            // 
+            // label3
+            // 
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label3.Location = new System.Drawing.Point(10, 182);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(404, 19);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Indicare i parametri per STT";
             // 
             // WasabiIvrIFlow
             // 
