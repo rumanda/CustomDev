@@ -62,7 +62,7 @@ static class AssemblyInfo {
 
     // Assembly version. Does not appear in file properties.
     // The CLR uses these version numbers to resolve references:
-    public const String Version         = "2.0.2.0";
+    public const String Version         = "2.0.3.0";
 
     // File version for Properties and Setup programs.
     public const String FileVersion     = Version;
